@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.labStatus = new System.Windows.Forms.Label();
@@ -58,6 +64,23 @@
             this.btnAddGame = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labTopLane = new System.Windows.Forms.Label();
+            this.labJungleLane = new System.Windows.Forms.Label();
+            this.labMidLane = new System.Windows.Forms.Label();
+            this.labAdLane = new System.Windows.Forms.Label();
+            this.labSupLane = new System.Windows.Forms.Label();
+            this.labTrend1 = new System.Windows.Forms.Label();
+            this.labTrend2 = new System.Windows.Forms.Label();
+            this.labTrend3 = new System.Windows.Forms.Label();
+            this.labTrend4 = new System.Windows.Forms.Label();
+            this.labTrend5 = new System.Windows.Forms.Label();
+            this.tboxComment = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +112,7 @@
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(41, 12);
             this.labStatus.TabIndex = 2;
-            this.labStatus.Text = "정지됨";
+            this.labStatus.Text = "실행중";
             // 
             // labAliTop
             // 
@@ -183,159 +206,8 @@
             // 
             // cboxAliTop
             // 
+            this.cboxAliTop.Enabled = false;
             this.cboxAliTop.FormattingEnabled = true;
-            this.cboxAliTop.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxAliTop.Location = new System.Drawing.Point(119, 90);
             this.cboxAliTop.Name = "cboxAliTop";
             this.cboxAliTop.Size = new System.Drawing.Size(130, 20);
@@ -344,159 +216,8 @@
             // 
             // cboxAliJungle
             // 
+            this.cboxAliJungle.Enabled = false;
             this.cboxAliJungle.FormattingEnabled = true;
-            this.cboxAliJungle.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxAliJungle.Location = new System.Drawing.Point(119, 120);
             this.cboxAliJungle.Name = "cboxAliJungle";
             this.cboxAliJungle.Size = new System.Drawing.Size(130, 20);
@@ -505,159 +226,8 @@
             // 
             // cboxAliMid
             // 
+            this.cboxAliMid.Enabled = false;
             this.cboxAliMid.FormattingEnabled = true;
-            this.cboxAliMid.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxAliMid.Location = new System.Drawing.Point(119, 151);
             this.cboxAliMid.Name = "cboxAliMid";
             this.cboxAliMid.Size = new System.Drawing.Size(130, 20);
@@ -666,159 +236,8 @@
             // 
             // cboxAliAd
             // 
+            this.cboxAliAd.Enabled = false;
             this.cboxAliAd.FormattingEnabled = true;
-            this.cboxAliAd.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxAliAd.Location = new System.Drawing.Point(119, 181);
             this.cboxAliAd.Name = "cboxAliAd";
             this.cboxAliAd.Size = new System.Drawing.Size(130, 20);
@@ -827,159 +246,8 @@
             // 
             // cboxAliSup
             // 
+            this.cboxAliSup.Enabled = false;
             this.cboxAliSup.FormattingEnabled = true;
-            this.cboxAliSup.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxAliSup.Location = new System.Drawing.Point(119, 212);
             this.cboxAliSup.Name = "cboxAliSup";
             this.cboxAliSup.Size = new System.Drawing.Size(130, 20);
@@ -988,159 +256,8 @@
             // 
             // cboxEnSup
             // 
+            this.cboxEnSup.Enabled = false;
             this.cboxEnSup.FormattingEnabled = true;
-            this.cboxEnSup.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxEnSup.Location = new System.Drawing.Point(119, 437);
             this.cboxEnSup.Name = "cboxEnSup";
             this.cboxEnSup.Size = new System.Drawing.Size(130, 20);
@@ -1149,159 +266,8 @@
             // 
             // cboxEnAd
             // 
+            this.cboxEnAd.Enabled = false;
             this.cboxEnAd.FormattingEnabled = true;
-            this.cboxEnAd.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxEnAd.Location = new System.Drawing.Point(119, 406);
             this.cboxEnAd.Name = "cboxEnAd";
             this.cboxEnAd.Size = new System.Drawing.Size(130, 20);
@@ -1310,159 +276,8 @@
             // 
             // cboxEnMid
             // 
+            this.cboxEnMid.Enabled = false;
             this.cboxEnMid.FormattingEnabled = true;
-            this.cboxEnMid.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxEnMid.Location = new System.Drawing.Point(119, 376);
             this.cboxEnMid.Name = "cboxEnMid";
             this.cboxEnMid.Size = new System.Drawing.Size(130, 20);
@@ -1471,159 +286,8 @@
             // 
             // cboxEnJungle
             // 
+            this.cboxEnJungle.Enabled = false;
             this.cboxEnJungle.FormattingEnabled = true;
-            this.cboxEnJungle.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxEnJungle.Location = new System.Drawing.Point(119, 345);
             this.cboxEnJungle.Name = "cboxEnJungle";
             this.cboxEnJungle.Size = new System.Drawing.Size(130, 20);
@@ -1632,159 +296,8 @@
             // 
             // cboxEnTop
             // 
+            this.cboxEnTop.Enabled = false;
             this.cboxEnTop.FormattingEnabled = true;
-            this.cboxEnTop.Items.AddRange(new object[] {
-            "아트록스",
-            "아리",
-            "아칼리",
-            "알리스타",
-            "아무무",
-            "애니비아",
-            "애니",
-            "아펠리오스",
-            "애쉬",
-            "아우렐리온솔",
-            "아지르",
-            "바드",
-            "블리츠크랭크",
-            "브랜드",
-            "브라움",
-            "케이틀린",
-            "카밀",
-            "카시오페아",
-            "초카스",
-            "코르키",
-            "다리우스",
-            "다이애나",
-            "문도박사",
-            "드레이븐",
-            "에코",
-            "엘리스",
-            "이블린",
-            "이즈리얼",
-            "피들스틱",
-            "피오라",
-            "피즈",
-            "갈리오",
-            "갱플랭크",
-            "가렌",
-            "나르",
-            "그라가스",
-            "그레이브즈",
-            "헤카림",
-            "하이머딩거",
-            "일라오이",
-            "이렐리아",
-            "아이번",
-            "잔나",
-            "자르반4세",
-            "잭스",
-            "제이스",
-            "진",
-            "징크스",
-            "카이사",
-            "칼리스타",
-            "카르마",
-            "카서스",
-            "카사딘",
-            "카타리나",
-            "케일",
-            "케인",
-            "케넨",
-            "카직스",
-            "킨드레드",
-            "클레드",
-            "코그모",
-            "르블랑",
-            "리신",
-            "레오나",
-            "릴리아",
-            "리산드라",
-            "루시안",
-            "룰루",
-            "럭스",
-            "말파이트",
-            "말자하",
-            "마오카이",
-            "마스터이",
-            "미스포츈",
-            "모데카이저",
-            "모르가나",
-            "나미",
-            "나서스",
-            "노틸러스",
-            "니코",
-            "니달리",
-            "녹턴",
-            "누누와월럼프",
-            "올라프",
-            "오리아나",
-            "오른",
-            "판테온",
-            "뽀삐",
-            "파이크",
-            "키아나",
-            "퀸",
-            "라칸",
-            "람머스",
-            "렉사이",
-            "레넥톤",
-            "렝가",
-            "리븐",
-            "럼블",
-            "라이즈",
-            "사미라",
-            "세주아니",
-            "세나",
-            "세트",
-            "샤코",
-            "쉔",
-            "쉬바나",
-            "신지드",
-            "사이온",
-            "시비르",
-            "스카너",
-            "소나",
-            "소라카",
-            "스웨인",
-            "사일러스",
-            "신드라",
-            "탐켄치",
-            "탈리야",
-            "탈론",
-            "타릭",
-            "티모",
-            "쓰레쉬",
-            "트리스타나",
-            "트런들",
-            "트린다미어",
-            "트위스티드페이트",
-            "트위치",
-            "우디르",
-            "우르곳",
-            "바루스",
-            "베인",
-            "베이가",
-            "벨코즈",
-            "바이",
-            "빅토르",
-            "블라디미르",
-            "볼리베어",
-            "워윅",
-            "오공",
-            "자야",
-            "제라스",
-            "신짜오",
-            "야스오",
-            "요네",
-            "요릭",
-            "유미",
-            "자크",
-            "제드",
-            "직스",
-            "질리언",
-            "조이",
-            "자이라"});
             this.cboxEnTop.Location = new System.Drawing.Point(119, 315);
             this.cboxEnTop.Name = "cboxEnTop";
             this.cboxEnTop.Size = new System.Drawing.Size(130, 20);
@@ -1806,6 +319,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
             this.dateTimePicker1.TabIndex = 26;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label2
             // 
@@ -1818,11 +332,14 @@
             // 
             // cboxGameNumber
             // 
+            this.cboxGameNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboxGameNumber.FormattingEnabled = true;
             this.cboxGameNumber.Location = new System.Drawing.Point(359, 27);
             this.cboxGameNumber.Name = "cboxGameNumber";
             this.cboxGameNumber.Size = new System.Drawing.Size(121, 20);
             this.cboxGameNumber.TabIndex = 28;
+            this.cboxGameNumber.SelectionChangeCommitted += new System.EventHandler(this.cboxGameNumber_SelectionChangeCommitted);
+            this.cboxGameNumber.TextChanged += new System.EventHandler(this.cboxGameNumber_TextChanged);
             // 
             // btnAddGame
             // 
@@ -1836,27 +353,281 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("굴림", 20F);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(301, 77);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1173, 181);
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowTemplate.Height = 100;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1235, 181);
             this.dataGridView1.TabIndex = 30;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("굴림", 20F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
             this.dataGridView2.Location = new System.Drawing.Point(301, 300);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(1173, 181);
+            this.dataGridView2.Size = new System.Drawing.Size(1235, 181);
             this.dataGridView2.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(296, 510);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 27);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "탑 라인전";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(269, 542);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 27);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "정글 라인전";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(269, 574);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(156, 27);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "미드 라인전";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(269, 606);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(156, 27);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "원딜 라인전";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(269, 638);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(156, 27);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "서폿 라인전";
+            // 
+            // labTopLane
+            // 
+            this.labTopLane.AutoSize = true;
+            this.labTopLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTopLane.Location = new System.Drawing.Point(444, 510);
+            this.labTopLane.Name = "labTopLane";
+            this.labTopLane.Size = new System.Drawing.Size(85, 27);
+            this.labTopLane.TabIndex = 32;
+            this.labTopLane.Text = "00.00";
+            // 
+            // labJungleLane
+            // 
+            this.labJungleLane.AutoSize = true;
+            this.labJungleLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labJungleLane.Location = new System.Drawing.Point(444, 542);
+            this.labJungleLane.Name = "labJungleLane";
+            this.labJungleLane.Size = new System.Drawing.Size(85, 27);
+            this.labJungleLane.TabIndex = 33;
+            this.labJungleLane.Text = "00.00";
+            // 
+            // labMidLane
+            // 
+            this.labMidLane.AutoSize = true;
+            this.labMidLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labMidLane.Location = new System.Drawing.Point(444, 574);
+            this.labMidLane.Name = "labMidLane";
+            this.labMidLane.Size = new System.Drawing.Size(85, 27);
+            this.labMidLane.TabIndex = 33;
+            this.labMidLane.Text = "00.00";
+            // 
+            // labAdLane
+            // 
+            this.labAdLane.AutoSize = true;
+            this.labAdLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labAdLane.Location = new System.Drawing.Point(444, 606);
+            this.labAdLane.Name = "labAdLane";
+            this.labAdLane.Size = new System.Drawing.Size(85, 27);
+            this.labAdLane.TabIndex = 33;
+            this.labAdLane.Text = "00.00";
+            // 
+            // labSupLane
+            // 
+            this.labSupLane.AutoSize = true;
+            this.labSupLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labSupLane.Location = new System.Drawing.Point(444, 638);
+            this.labSupLane.Name = "labSupLane";
+            this.labSupLane.Size = new System.Drawing.Size(85, 27);
+            this.labSupLane.TabIndex = 33;
+            this.labSupLane.Text = "00.00";
+            // 
+            // labTrend1
+            // 
+            this.labTrend1.AutoSize = true;
+            this.labTrend1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTrend1.Location = new System.Drawing.Point(760, 510);
+            this.labTrend1.Name = "labTrend1";
+            this.labTrend1.Size = new System.Drawing.Size(85, 27);
+            this.labTrend1.TabIndex = 34;
+            this.labTrend1.Text = "00.00";
+            // 
+            // labTrend2
+            // 
+            this.labTrend2.AutoSize = true;
+            this.labTrend2.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTrend2.Location = new System.Drawing.Point(898, 510);
+            this.labTrend2.Name = "labTrend2";
+            this.labTrend2.Size = new System.Drawing.Size(85, 27);
+            this.labTrend2.TabIndex = 35;
+            this.labTrend2.Text = "00.00";
+            // 
+            // labTrend3
+            // 
+            this.labTrend3.AutoSize = true;
+            this.labTrend3.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTrend3.Location = new System.Drawing.Point(1051, 510);
+            this.labTrend3.Name = "labTrend3";
+            this.labTrend3.Size = new System.Drawing.Size(85, 27);
+            this.labTrend3.TabIndex = 35;
+            this.labTrend3.Text = "00.00";
+            // 
+            // labTrend4
+            // 
+            this.labTrend4.AutoSize = true;
+            this.labTrend4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTrend4.Location = new System.Drawing.Point(1198, 510);
+            this.labTrend4.Name = "labTrend4";
+            this.labTrend4.Size = new System.Drawing.Size(85, 27);
+            this.labTrend4.TabIndex = 35;
+            this.labTrend4.Text = "00.00";
+            // 
+            // labTrend5
+            // 
+            this.labTrend5.AutoSize = true;
+            this.labTrend5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labTrend5.Location = new System.Drawing.Point(1343, 510);
+            this.labTrend5.Name = "labTrend5";
+            this.labTrend5.Size = new System.Drawing.Size(85, 27);
+            this.labTrend5.TabIndex = 35;
+            this.labTrend5.Text = "00.00";
+            // 
+            // tboxComment
+            // 
+            this.tboxComment.Enabled = false;
+            this.tboxComment.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tboxComment.Location = new System.Drawing.Point(38, 684);
+            this.tboxComment.Multiline = true;
+            this.tboxComment.Name = "tboxComment";
+            this.tboxComment.Size = new System.Drawing.Size(1498, 165);
+            this.tboxComment.TabIndex = 36;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(593, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 37;
+            this.button1.Text = "게임 저장";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tboxComment);
+            this.Controls.Add(this.labTrend5);
+            this.Controls.Add(this.labTrend4);
+            this.Controls.Add(this.labTrend3);
+            this.Controls.Add(this.labTrend2);
+            this.Controls.Add(this.labTrend1);
+            this.Controls.Add(this.labSupLane);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.labAdLane);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.labMidLane);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labJungleLane);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labTopLane);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAddGame);
@@ -1929,6 +700,23 @@
         private System.Windows.Forms.Button btnAddGame;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labTopLane;
+        private System.Windows.Forms.Label labJungleLane;
+        private System.Windows.Forms.Label labMidLane;
+        private System.Windows.Forms.Label labAdLane;
+        private System.Windows.Forms.Label labSupLane;
+        private System.Windows.Forms.Label labTrend1;
+        private System.Windows.Forms.Label labTrend2;
+        private System.Windows.Forms.Label labTrend3;
+        private System.Windows.Forms.Label labTrend4;
+        private System.Windows.Forms.Label labTrend5;
+        private System.Windows.Forms.TextBox tboxComment;
+        private System.Windows.Forms.Button button1;
     }
 }
 

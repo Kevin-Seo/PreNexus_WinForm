@@ -22,8 +22,8 @@ namespace LoL_Assistant
             SQLite db = SQLite.Instance;
             db.Path = "LOLASSISTANT.DB";
             db.Open();
-            db.Write("CREATE TABLE IF NOT EXISTS GameInfo (ID string PRIMARY KEY, Date datetime, Number int)");
-            db.Write("CREATE TABLE IF NOT EXISTS GameRepository (ID string, Team string, Position string, Champ string, LineRate real, Length1 real, Length2 real, Length3 real, Length4 real, Length5 real)");
+            db.Write("CREATE TABLE IF NOT EXISTS GameInfo (ID string PRIMARY KEY, Date datetime, Number int, Comment string, Save bool)");
+            db.Write("CREATE TABLE IF NOT EXISTS GameRepository (ID string, Team string, Position string, Champ string, LineRate real, Trend1 real, Trend2 real, Trend3 real, Trend4 real, Trend5 real)");
 
             Application.Run(new Form1());
         }
