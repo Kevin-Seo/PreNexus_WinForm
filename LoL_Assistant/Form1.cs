@@ -1183,6 +1183,133 @@ namespace LoL_Assistant
             db.Write($"INSERT INTO MyInfo (IsMain, Position, Champ) VALUES (true, '{cboxMainPos.Text}', '{tboxMainPos.Text}')");
             db.Write($"INSERT INTO MyInfo (IsMain, Position, Champ) VALUES (false, '{cboxSubPos.Text}', '{tboxSubPos.Text}')");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            VsSortMethod("라인전우위");
+            labVsStatus.Text = "현재: 라인전우위";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            VsSortMethod("게임승률");
+            labVsStatus.Text = "현재: 게임승률";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            VsSortMethod("평균");
+            labVsStatus.Text = "현재: 평균";
+        }
+
+        async public void VsSortMethod(string mode)
+        {
+            List<VsChamp> listVsChamp = new List<VsChamp>();
+            List<Task> listTask = new List<Task>();
+
+            string refer = "";
+            string referEn = "";
+            string referEnemy = tboxVsChamp.Text;
+
+            if (rbtnAliTop.Checked)
+            {
+                refer = "탑";
+                referEn = "top";
+            }
+            else if (rbtnAliJungle.Checked)
+            {
+                refer = "정글";
+                referEn = "jungle";
+            }
+            else if (rbtnAliMid.Checked)
+            {
+                refer = "미드";
+                referEn = "mid";
+            }
+            else if (rbtnAliAd.Checked)
+            {
+                refer = "원딜";
+                referEn = "acd";
+            }
+            else if (rbtnAliSup.Checked)
+            {
+                refer = "서폿";
+                referEn = "support";
+            }
+
+            string champlist = "";
+            if (cboxMainPos.Text == refer)
+                champlist = tboxMainPos.Text;
+            else if (cboxSubPos.Text == refer)
+                champlist = tboxSubPos.Text;
+
+            if (champlist.Length == 0) return;
+            if (referEnemy.Length == 0) return;
+
+            string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+            foreach (string champ in champs)
+            {
+                if (champ == "") continue;
+                if (champ == referEnemy) continue;
+
+                listTask.Add(Task.Run(() =>
+                {
+                    SQLite db = SQLite.Instance;
+                    DataTable dt;
+                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                    string AliOpID = (string)dt.Rows[0]["OpggID"];
+                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{referEnemy}')");
+                    string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                    List<string> lineRate = GetLineRate(referEn, AliOpID, EnOpID);
+                    List<string> winRate = GetWinRate(referEn, AliOpID, EnOpID);
+                    listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                }));
+            }
+
+            await Task.WhenAll(listTask.ToArray());
+
+            listVsChamp.Sort(delegate (VsChamp x, VsChamp y)
+            {
+                if (mode == "평균")
+                {
+                    if (x.vsAvg > y.vsAvg) return -1;
+                    else return 1;
+                }
+                else if (mode == "라인전우위")
+                {
+                    if (x.vsLane > y.vsLane) return -1;
+                    else return 1;
+                }
+                else // if (mode == "게임승률")
+                {
+                    if (x.vsGame > y.vsGame) return -1;
+                    else return 1;
+                }
+            });
+
+            if (tboxVsChamp.Text != "")
+            {
+                for (int i = 0; i < listVsChamp.Count; i++)
+                {
+                    if (i == 3) break;
+
+                    if (i == 0)
+                    {
+                        tboxVs1.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                    }
+                    else if (i == 1)
+                    {
+                        tboxVs2.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                    }
+                    else if (i == 2)
+                    {
+                        tboxVs3.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                    }
+                }
+            }
+        }
     }
 
     class VsChamp
