@@ -24,6 +24,7 @@ namespace LoL_Assistant
             db.Open();
             db.Write("CREATE TABLE IF NOT EXISTS GameInfo (ID string PRIMARY KEY, Date datetime, Number int, Comment string, Save bool)");
             db.Write("CREATE TABLE IF NOT EXISTS GameRepository (ID string, Team string, Position string, Champ string, LineRate real, Trend1 real, Trend2 real, Trend3 real, Trend4 real, Trend5 real)");
+            db.Write("CREATE TABLE IF NOT EXISTS MyInfo (IsMain bool, Position string, Champ string)");
 
             Application.Run(new Form1());
         }

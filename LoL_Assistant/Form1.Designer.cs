@@ -28,20 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.labStatus = new System.Windows.Forms.Label();
-            this.labAliTop = new System.Windows.Forms.Label();
-            this.labAliJungle = new System.Windows.Forms.Label();
-            this.labAliMid = new System.Windows.Forms.Label();
-            this.labAliAd = new System.Windows.Forms.Label();
-            this.labAliSup = new System.Windows.Forms.Label();
             this.labAnSup = new System.Windows.Forms.Label();
             this.labEnAd = new System.Windows.Forms.Label();
             this.labEnMid = new System.Windows.Forms.Label();
@@ -81,13 +76,34 @@
             this.labTrend5 = new System.Windows.Forms.Label();
             this.tboxComment = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.labRecord = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tboxMainPos = new System.Windows.Forms.TextBox();
+            this.tboxSubPos = new System.Windows.Forms.TextBox();
+            this.btnMainSubPos = new System.Windows.Forms.Button();
+            this.cboxMainPos = new System.Windows.Forms.ComboBox();
+            this.cboxSubPos = new System.Windows.Forms.ComboBox();
+            this.rbtnAliTop = new System.Windows.Forms.RadioButton();
+            this.rbtnAliJungle = new System.Windows.Forms.RadioButton();
+            this.rbtnAliMid = new System.Windows.Forms.RadioButton();
+            this.rbtnAliAd = new System.Windows.Forms.RadioButton();
+            this.rbtnAliSup = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tboxVs1 = new System.Windows.Forms.TextBox();
+            this.tboxVs2 = new System.Windows.Forms.TextBox();
+            this.tboxVs3 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tboxVsChamp = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(1399, 22);
+            this.btnStart.Location = new System.Drawing.Point(1092, 22);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -97,7 +113,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(1489, 22);
+            this.btnStop.Location = new System.Drawing.Point(1182, 22);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 1;
@@ -108,61 +124,16 @@
             // labStatus
             // 
             this.labStatus.AutoSize = true;
-            this.labStatus.Location = new System.Drawing.Point(1328, 27);
+            this.labStatus.Location = new System.Drawing.Point(1030, 27);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(41, 12);
             this.labStatus.TabIndex = 2;
             this.labStatus.Text = "실행중";
             // 
-            // labAliTop
-            // 
-            this.labAliTop.AutoSize = true;
-            this.labAliTop.Location = new System.Drawing.Point(36, 93);
-            this.labAliTop.Name = "labAliTop";
-            this.labAliTop.Size = new System.Drawing.Size(57, 12);
-            this.labAliTop.TabIndex = 3;
-            this.labAliTop.Text = "우리팀 탑";
-            // 
-            // labAliJungle
-            // 
-            this.labAliJungle.AutoSize = true;
-            this.labAliJungle.Location = new System.Drawing.Point(36, 123);
-            this.labAliJungle.Name = "labAliJungle";
-            this.labAliJungle.Size = new System.Drawing.Size(69, 12);
-            this.labAliJungle.TabIndex = 4;
-            this.labAliJungle.Text = "우리팀 정글";
-            // 
-            // labAliMid
-            // 
-            this.labAliMid.AutoSize = true;
-            this.labAliMid.Location = new System.Drawing.Point(36, 154);
-            this.labAliMid.Name = "labAliMid";
-            this.labAliMid.Size = new System.Drawing.Size(69, 12);
-            this.labAliMid.TabIndex = 4;
-            this.labAliMid.Text = "우리팀 미드";
-            // 
-            // labAliAd
-            // 
-            this.labAliAd.AutoSize = true;
-            this.labAliAd.Location = new System.Drawing.Point(36, 184);
-            this.labAliAd.Name = "labAliAd";
-            this.labAliAd.Size = new System.Drawing.Size(69, 12);
-            this.labAliAd.TabIndex = 4;
-            this.labAliAd.Text = "우리팀 원딜";
-            // 
-            // labAliSup
-            // 
-            this.labAliSup.AutoSize = true;
-            this.labAliSup.Location = new System.Drawing.Point(36, 215);
-            this.labAliSup.Name = "labAliSup";
-            this.labAliSup.Size = new System.Drawing.Size(69, 12);
-            this.labAliSup.TabIndex = 4;
-            this.labAliSup.Text = "우리팀 서폿";
-            // 
             // labAnSup
             // 
             this.labAnSup.AutoSize = true;
-            this.labAnSup.Location = new System.Drawing.Point(36, 440);
+            this.labAnSup.Location = new System.Drawing.Point(31, 545);
             this.labAnSup.Name = "labAnSup";
             this.labAnSup.Size = new System.Drawing.Size(57, 12);
             this.labAnSup.TabIndex = 6;
@@ -171,7 +142,7 @@
             // labEnAd
             // 
             this.labEnAd.AutoSize = true;
-            this.labEnAd.Location = new System.Drawing.Point(36, 409);
+            this.labEnAd.Location = new System.Drawing.Point(31, 514);
             this.labEnAd.Name = "labEnAd";
             this.labEnAd.Size = new System.Drawing.Size(57, 12);
             this.labEnAd.TabIndex = 7;
@@ -180,7 +151,7 @@
             // labEnMid
             // 
             this.labEnMid.AutoSize = true;
-            this.labEnMid.Location = new System.Drawing.Point(36, 379);
+            this.labEnMid.Location = new System.Drawing.Point(31, 484);
             this.labEnMid.Name = "labEnMid";
             this.labEnMid.Size = new System.Drawing.Size(57, 12);
             this.labEnMid.TabIndex = 8;
@@ -189,7 +160,7 @@
             // labEnJungle
             // 
             this.labEnJungle.AutoSize = true;
-            this.labEnJungle.Location = new System.Drawing.Point(36, 348);
+            this.labEnJungle.Location = new System.Drawing.Point(31, 453);
             this.labEnJungle.Name = "labEnJungle";
             this.labEnJungle.Size = new System.Drawing.Size(57, 12);
             this.labEnJungle.TabIndex = 9;
@@ -198,7 +169,7 @@
             // labEnTop
             // 
             this.labEnTop.AutoSize = true;
-            this.labEnTop.Location = new System.Drawing.Point(36, 318);
+            this.labEnTop.Location = new System.Drawing.Point(31, 423);
             this.labEnTop.Name = "labEnTop";
             this.labEnTop.Size = new System.Drawing.Size(45, 12);
             this.labEnTop.TabIndex = 5;
@@ -208,7 +179,7 @@
             // 
             this.cboxAliTop.Enabled = false;
             this.cboxAliTop.FormattingEnabled = true;
-            this.cboxAliTop.Location = new System.Drawing.Point(119, 90);
+            this.cboxAliTop.Location = new System.Drawing.Point(114, 195);
             this.cboxAliTop.Name = "cboxAliTop";
             this.cboxAliTop.Size = new System.Drawing.Size(130, 20);
             this.cboxAliTop.TabIndex = 16;
@@ -218,7 +189,7 @@
             // 
             this.cboxAliJungle.Enabled = false;
             this.cboxAliJungle.FormattingEnabled = true;
-            this.cboxAliJungle.Location = new System.Drawing.Point(119, 120);
+            this.cboxAliJungle.Location = new System.Drawing.Point(114, 225);
             this.cboxAliJungle.Name = "cboxAliJungle";
             this.cboxAliJungle.Size = new System.Drawing.Size(130, 20);
             this.cboxAliJungle.TabIndex = 17;
@@ -228,7 +199,7 @@
             // 
             this.cboxAliMid.Enabled = false;
             this.cboxAliMid.FormattingEnabled = true;
-            this.cboxAliMid.Location = new System.Drawing.Point(119, 151);
+            this.cboxAliMid.Location = new System.Drawing.Point(114, 256);
             this.cboxAliMid.Name = "cboxAliMid";
             this.cboxAliMid.Size = new System.Drawing.Size(130, 20);
             this.cboxAliMid.TabIndex = 18;
@@ -238,7 +209,7 @@
             // 
             this.cboxAliAd.Enabled = false;
             this.cboxAliAd.FormattingEnabled = true;
-            this.cboxAliAd.Location = new System.Drawing.Point(119, 181);
+            this.cboxAliAd.Location = new System.Drawing.Point(114, 286);
             this.cboxAliAd.Name = "cboxAliAd";
             this.cboxAliAd.Size = new System.Drawing.Size(130, 20);
             this.cboxAliAd.TabIndex = 19;
@@ -248,7 +219,7 @@
             // 
             this.cboxAliSup.Enabled = false;
             this.cboxAliSup.FormattingEnabled = true;
-            this.cboxAliSup.Location = new System.Drawing.Point(119, 212);
+            this.cboxAliSup.Location = new System.Drawing.Point(114, 317);
             this.cboxAliSup.Name = "cboxAliSup";
             this.cboxAliSup.Size = new System.Drawing.Size(130, 20);
             this.cboxAliSup.TabIndex = 20;
@@ -258,7 +229,7 @@
             // 
             this.cboxEnSup.Enabled = false;
             this.cboxEnSup.FormattingEnabled = true;
-            this.cboxEnSup.Location = new System.Drawing.Point(119, 437);
+            this.cboxEnSup.Location = new System.Drawing.Point(114, 542);
             this.cboxEnSup.Name = "cboxEnSup";
             this.cboxEnSup.Size = new System.Drawing.Size(130, 20);
             this.cboxEnSup.TabIndex = 25;
@@ -268,7 +239,7 @@
             // 
             this.cboxEnAd.Enabled = false;
             this.cboxEnAd.FormattingEnabled = true;
-            this.cboxEnAd.Location = new System.Drawing.Point(119, 406);
+            this.cboxEnAd.Location = new System.Drawing.Point(114, 511);
             this.cboxEnAd.Name = "cboxEnAd";
             this.cboxEnAd.Size = new System.Drawing.Size(130, 20);
             this.cboxEnAd.TabIndex = 24;
@@ -278,7 +249,7 @@
             // 
             this.cboxEnMid.Enabled = false;
             this.cboxEnMid.FormattingEnabled = true;
-            this.cboxEnMid.Location = new System.Drawing.Point(119, 376);
+            this.cboxEnMid.Location = new System.Drawing.Point(114, 481);
             this.cboxEnMid.Name = "cboxEnMid";
             this.cboxEnMid.Size = new System.Drawing.Size(130, 20);
             this.cboxEnMid.TabIndex = 23;
@@ -288,7 +259,7 @@
             // 
             this.cboxEnJungle.Enabled = false;
             this.cboxEnJungle.FormattingEnabled = true;
-            this.cboxEnJungle.Location = new System.Drawing.Point(119, 345);
+            this.cboxEnJungle.Location = new System.Drawing.Point(114, 450);
             this.cboxEnJungle.Name = "cboxEnJungle";
             this.cboxEnJungle.Size = new System.Drawing.Size(130, 20);
             this.cboxEnJungle.TabIndex = 22;
@@ -298,7 +269,7 @@
             // 
             this.cboxEnTop.Enabled = false;
             this.cboxEnTop.FormattingEnabled = true;
-            this.cboxEnTop.Location = new System.Drawing.Point(119, 315);
+            this.cboxEnTop.Location = new System.Drawing.Point(114, 420);
             this.cboxEnTop.Name = "cboxEnTop";
             this.cboxEnTop.Size = new System.Drawing.Size(130, 20);
             this.cboxEnTop.TabIndex = 21;
@@ -359,39 +330,39 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("굴림", 20F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 20F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(301, 77);
+            this.dataGridView1.Location = new System.Drawing.Point(296, 182);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 100;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1235, 181);
+            this.dataGridView1.Size = new System.Drawing.Size(961, 181);
             this.dataGridView1.TabIndex = 30;
             // 
             // dataGridView2
@@ -402,45 +373,46 @@
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("굴림", 20F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("굴림", 20F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(301, 300);
+            this.dataGridView2.Location = new System.Drawing.Point(296, 405);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(1235, 181);
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(961, 181);
             this.dataGridView2.TabIndex = 31;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(296, 510);
+            this.label3.Location = new System.Drawing.Point(291, 615);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 27);
             this.label3.TabIndex = 32;
@@ -450,7 +422,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(269, 542);
+            this.label4.Location = new System.Drawing.Point(264, 647);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 27);
             this.label4.TabIndex = 33;
@@ -460,7 +432,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(269, 574);
+            this.label5.Location = new System.Drawing.Point(264, 679);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(156, 27);
             this.label5.TabIndex = 33;
@@ -470,7 +442,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(269, 606);
+            this.label6.Location = new System.Drawing.Point(264, 711);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(156, 27);
             this.label6.TabIndex = 33;
@@ -480,7 +452,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(269, 638);
+            this.label7.Location = new System.Drawing.Point(264, 743);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(156, 27);
             this.label7.TabIndex = 33;
@@ -490,7 +462,7 @@
             // 
             this.labTopLane.AutoSize = true;
             this.labTopLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTopLane.Location = new System.Drawing.Point(444, 510);
+            this.labTopLane.Location = new System.Drawing.Point(439, 615);
             this.labTopLane.Name = "labTopLane";
             this.labTopLane.Size = new System.Drawing.Size(85, 27);
             this.labTopLane.TabIndex = 32;
@@ -500,7 +472,7 @@
             // 
             this.labJungleLane.AutoSize = true;
             this.labJungleLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labJungleLane.Location = new System.Drawing.Point(444, 542);
+            this.labJungleLane.Location = new System.Drawing.Point(439, 647);
             this.labJungleLane.Name = "labJungleLane";
             this.labJungleLane.Size = new System.Drawing.Size(85, 27);
             this.labJungleLane.TabIndex = 33;
@@ -510,7 +482,7 @@
             // 
             this.labMidLane.AutoSize = true;
             this.labMidLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labMidLane.Location = new System.Drawing.Point(444, 574);
+            this.labMidLane.Location = new System.Drawing.Point(439, 679);
             this.labMidLane.Name = "labMidLane";
             this.labMidLane.Size = new System.Drawing.Size(85, 27);
             this.labMidLane.TabIndex = 33;
@@ -520,7 +492,7 @@
             // 
             this.labAdLane.AutoSize = true;
             this.labAdLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labAdLane.Location = new System.Drawing.Point(444, 606);
+            this.labAdLane.Location = new System.Drawing.Point(439, 711);
             this.labAdLane.Name = "labAdLane";
             this.labAdLane.Size = new System.Drawing.Size(85, 27);
             this.labAdLane.TabIndex = 33;
@@ -530,7 +502,7 @@
             // 
             this.labSupLane.AutoSize = true;
             this.labSupLane.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labSupLane.Location = new System.Drawing.Point(444, 638);
+            this.labSupLane.Location = new System.Drawing.Point(439, 743);
             this.labSupLane.Name = "labSupLane";
             this.labSupLane.Size = new System.Drawing.Size(85, 27);
             this.labSupLane.TabIndex = 33;
@@ -540,7 +512,7 @@
             // 
             this.labTrend1.AutoSize = true;
             this.labTrend1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTrend1.Location = new System.Drawing.Point(760, 510);
+            this.labTrend1.Location = new System.Drawing.Point(737, 615);
             this.labTrend1.Name = "labTrend1";
             this.labTrend1.Size = new System.Drawing.Size(85, 27);
             this.labTrend1.TabIndex = 34;
@@ -550,7 +522,7 @@
             // 
             this.labTrend2.AutoSize = true;
             this.labTrend2.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTrend2.Location = new System.Drawing.Point(898, 510);
+            this.labTrend2.Location = new System.Drawing.Point(842, 615);
             this.labTrend2.Name = "labTrend2";
             this.labTrend2.Size = new System.Drawing.Size(85, 27);
             this.labTrend2.TabIndex = 35;
@@ -560,7 +532,7 @@
             // 
             this.labTrend3.AutoSize = true;
             this.labTrend3.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTrend3.Location = new System.Drawing.Point(1051, 510);
+            this.labTrend3.Location = new System.Drawing.Point(951, 615);
             this.labTrend3.Name = "labTrend3";
             this.labTrend3.Size = new System.Drawing.Size(85, 27);
             this.labTrend3.TabIndex = 35;
@@ -570,7 +542,7 @@
             // 
             this.labTrend4.AutoSize = true;
             this.labTrend4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTrend4.Location = new System.Drawing.Point(1198, 510);
+            this.labTrend4.Location = new System.Drawing.Point(1060, 615);
             this.labTrend4.Name = "labTrend4";
             this.labTrend4.Size = new System.Drawing.Size(85, 27);
             this.labTrend4.TabIndex = 35;
@@ -580,7 +552,7 @@
             // 
             this.labTrend5.AutoSize = true;
             this.labTrend5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labTrend5.Location = new System.Drawing.Point(1343, 510);
+            this.labTrend5.Location = new System.Drawing.Point(1166, 615);
             this.labTrend5.Name = "labTrend5";
             this.labTrend5.Size = new System.Drawing.Size(85, 27);
             this.labTrend5.TabIndex = 35;
@@ -588,12 +560,11 @@
             // 
             // tboxComment
             // 
-            this.tboxComment.Enabled = false;
             this.tboxComment.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tboxComment.Location = new System.Drawing.Point(38, 684);
+            this.tboxComment.Location = new System.Drawing.Point(33, 789);
             this.tboxComment.Multiline = true;
             this.tboxComment.Name = "tboxComment";
-            this.tboxComment.Size = new System.Drawing.Size(1498, 165);
+            this.tboxComment.Size = new System.Drawing.Size(1224, 165);
             this.tboxComment.TabIndex = 36;
             // 
             // button1
@@ -606,11 +577,237 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // labRecord
+            // 
+            this.labRecord.AutoSize = true;
+            this.labRecord.Font = new System.Drawing.Font("굴림", 32F, System.Drawing.FontStyle.Bold);
+            this.labRecord.ForeColor = System.Drawing.Color.Red;
+            this.labRecord.Location = new System.Drawing.Point(801, 9);
+            this.labRecord.Name = "labRecord";
+            this.labRecord.Size = new System.Drawing.Size(214, 43);
+            this.labRecord.TabIndex = 38;
+            this.labRecord.Text = "OBS OFF";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(38, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "주포지션";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(299, 65);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "부포지션";
+            // 
+            // tboxMainPos
+            // 
+            this.tboxMainPos.Location = new System.Drawing.Point(104, 62);
+            this.tboxMainPos.Multiline = true;
+            this.tboxMainPos.Name = "tboxMainPos";
+            this.tboxMainPos.Size = new System.Drawing.Size(167, 103);
+            this.tboxMainPos.TabIndex = 47;
+            // 
+            // tboxSubPos
+            // 
+            this.tboxSubPos.Location = new System.Drawing.Point(365, 61);
+            this.tboxSubPos.Multiline = true;
+            this.tboxSubPos.Name = "tboxSubPos";
+            this.tboxSubPos.Size = new System.Drawing.Size(167, 104);
+            this.tboxSubPos.TabIndex = 47;
+            // 
+            // btnMainSubPos
+            // 
+            this.btnMainSubPos.Location = new System.Drawing.Point(538, 89);
+            this.btnMainSubPos.Name = "btnMainSubPos";
+            this.btnMainSubPos.Size = new System.Drawing.Size(54, 47);
+            this.btnMainSubPos.TabIndex = 48;
+            this.btnMainSubPos.Text = "챔피언갱신";
+            this.btnMainSubPos.UseVisualStyleBackColor = true;
+            this.btnMainSubPos.Click += new System.EventHandler(this.btnMainSubPos_Click);
+            // 
+            // cboxMainPos
+            // 
+            this.cboxMainPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxMainPos.FormattingEnabled = true;
+            this.cboxMainPos.Items.AddRange(new object[] {
+            "탑",
+            "정글",
+            "미드",
+            "원딜",
+            "서폿"});
+            this.cboxMainPos.Location = new System.Drawing.Point(33, 80);
+            this.cboxMainPos.Name = "cboxMainPos";
+            this.cboxMainPos.Size = new System.Drawing.Size(65, 20);
+            this.cboxMainPos.TabIndex = 49;
+            // 
+            // cboxSubPos
+            // 
+            this.cboxSubPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxSubPos.FormattingEnabled = true;
+            this.cboxSubPos.Items.AddRange(new object[] {
+            "탑",
+            "정글",
+            "미드",
+            "원딜",
+            "서폿"});
+            this.cboxSubPos.Location = new System.Drawing.Point(294, 80);
+            this.cboxSubPos.Name = "cboxSubPos";
+            this.cboxSubPos.Size = new System.Drawing.Size(65, 20);
+            this.cboxSubPos.TabIndex = 50;
+            // 
+            // rbtnAliTop
+            // 
+            this.rbtnAliTop.AutoSize = true;
+            this.rbtnAliTop.Location = new System.Drawing.Point(16, 196);
+            this.rbtnAliTop.Name = "rbtnAliTop";
+            this.rbtnAliTop.Size = new System.Drawing.Size(75, 16);
+            this.rbtnAliTop.TabIndex = 46;
+            this.rbtnAliTop.Text = "우리팀 탑";
+            this.rbtnAliTop.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAliJungle
+            // 
+            this.rbtnAliJungle.AutoSize = true;
+            this.rbtnAliJungle.Location = new System.Drawing.Point(16, 226);
+            this.rbtnAliJungle.Name = "rbtnAliJungle";
+            this.rbtnAliJungle.Size = new System.Drawing.Size(87, 16);
+            this.rbtnAliJungle.TabIndex = 46;
+            this.rbtnAliJungle.Text = "우리팀 정글";
+            this.rbtnAliJungle.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAliMid
+            // 
+            this.rbtnAliMid.AutoSize = true;
+            this.rbtnAliMid.Checked = true;
+            this.rbtnAliMid.Location = new System.Drawing.Point(16, 257);
+            this.rbtnAliMid.Name = "rbtnAliMid";
+            this.rbtnAliMid.Size = new System.Drawing.Size(87, 16);
+            this.rbtnAliMid.TabIndex = 46;
+            this.rbtnAliMid.TabStop = true;
+            this.rbtnAliMid.Text = "우리팀 미드";
+            this.rbtnAliMid.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAliAd
+            // 
+            this.rbtnAliAd.AutoSize = true;
+            this.rbtnAliAd.Location = new System.Drawing.Point(16, 287);
+            this.rbtnAliAd.Name = "rbtnAliAd";
+            this.rbtnAliAd.Size = new System.Drawing.Size(87, 16);
+            this.rbtnAliAd.TabIndex = 46;
+            this.rbtnAliAd.Text = "우리팀 원딜";
+            this.rbtnAliAd.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAliSup
+            // 
+            this.rbtnAliSup.AutoSize = true;
+            this.rbtnAliSup.Location = new System.Drawing.Point(16, 318);
+            this.rbtnAliSup.Name = "rbtnAliSup";
+            this.rbtnAliSup.Size = new System.Drawing.Size(87, 16);
+            this.rbtnAliSup.TabIndex = 46;
+            this.rbtnAliSup.Text = "우리팀 서폿";
+            this.rbtnAliSup.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(656, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(75, 12);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "추천챔피언 1";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(656, 121);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 12);
+            this.label11.TabIndex = 51;
+            this.label11.Text = "추천챔피언 2";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(656, 147);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(75, 12);
+            this.label12.TabIndex = 51;
+            this.label12.Text = "추천챔피언 3";
+            // 
+            // tboxVs1
+            // 
+            this.tboxVs1.Location = new System.Drawing.Point(742, 91);
+            this.tboxVs1.Name = "tboxVs1";
+            this.tboxVs1.ReadOnly = true;
+            this.tboxVs1.Size = new System.Drawing.Size(509, 21);
+            this.tboxVs1.TabIndex = 52;
+            // 
+            // tboxVs2
+            // 
+            this.tboxVs2.Location = new System.Drawing.Point(742, 118);
+            this.tboxVs2.Name = "tboxVs2";
+            this.tboxVs2.ReadOnly = true;
+            this.tboxVs2.Size = new System.Drawing.Size(509, 21);
+            this.tboxVs2.TabIndex = 53;
+            // 
+            // tboxVs3
+            // 
+            this.tboxVs3.Location = new System.Drawing.Point(742, 144);
+            this.tboxVs3.Name = "tboxVs3";
+            this.tboxVs3.ReadOnly = true;
+            this.tboxVs3.Size = new System.Drawing.Size(509, 21);
+            this.tboxVs3.TabIndex = 53;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(710, 64);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(21, 12);
+            this.label13.TabIndex = 54;
+            this.label13.Text = "VS";
+            // 
+            // tboxVsChamp
+            // 
+            this.tboxVsChamp.Location = new System.Drawing.Point(742, 61);
+            this.tboxVsChamp.Name = "tboxVsChamp";
+            this.tboxVsChamp.ReadOnly = true;
+            this.tboxVsChamp.Size = new System.Drawing.Size(157, 21);
+            this.tboxVsChamp.TabIndex = 55;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.ClientSize = new System.Drawing.Size(1281, 961);
+            this.Controls.Add(this.tboxVsChamp);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.tboxVs3);
+            this.Controls.Add(this.tboxVs2);
+            this.Controls.Add(this.tboxVs1);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.cboxSubPos);
+            this.Controls.Add(this.cboxMainPos);
+            this.Controls.Add(this.btnMainSubPos);
+            this.Controls.Add(this.tboxSubPos);
+            this.Controls.Add(this.tboxMainPos);
+            this.Controls.Add(this.rbtnAliSup);
+            this.Controls.Add(this.rbtnAliAd);
+            this.Controls.Add(this.rbtnAliMid);
+            this.Controls.Add(this.rbtnAliJungle);
+            this.Controls.Add(this.rbtnAliTop);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.labRecord);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tboxComment);
             this.Controls.Add(this.labTrend5);
@@ -649,12 +846,7 @@
             this.Controls.Add(this.labEnMid);
             this.Controls.Add(this.labEnJungle);
             this.Controls.Add(this.labEnTop);
-            this.Controls.Add(this.labAliSup);
-            this.Controls.Add(this.labAliAd);
-            this.Controls.Add(this.labAliMid);
-            this.Controls.Add(this.labAliJungle);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.labAliTop);
             this.Controls.Add(this.labStatus);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -673,11 +865,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label labStatus;
-        private System.Windows.Forms.Label labAliTop;
-        private System.Windows.Forms.Label labAliJungle;
-        private System.Windows.Forms.Label labAliMid;
-        private System.Windows.Forms.Label labAliAd;
-        private System.Windows.Forms.Label labAliSup;
         private System.Windows.Forms.Label labAnSup;
         private System.Windows.Forms.Label labEnAd;
         private System.Windows.Forms.Label labEnMid;
@@ -717,6 +904,27 @@
         private System.Windows.Forms.Label labTrend5;
         private System.Windows.Forms.TextBox tboxComment;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labRecord;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tboxMainPos;
+        private System.Windows.Forms.TextBox tboxSubPos;
+        private System.Windows.Forms.Button btnMainSubPos;
+        private System.Windows.Forms.ComboBox cboxMainPos;
+        private System.Windows.Forms.ComboBox cboxSubPos;
+        private System.Windows.Forms.RadioButton rbtnAliTop;
+        private System.Windows.Forms.RadioButton rbtnAliJungle;
+        private System.Windows.Forms.RadioButton rbtnAliMid;
+        private System.Windows.Forms.RadioButton rbtnAliAd;
+        private System.Windows.Forms.RadioButton rbtnAliSup;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tboxVs1;
+        private System.Windows.Forms.TextBox tboxVs2;
+        private System.Windows.Forms.TextBox tboxVs3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tboxVsChamp;
     }
 }
 
