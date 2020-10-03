@@ -749,6 +749,8 @@ namespace LoL_Assistant
             List<VsChamp> listVsChamp = new List<VsChamp>();
             List<Task> listTask = new List<Task>();
 
+            if (nowGameSaved) return;
+
             if (rbtnAliTop.Checked)
             {
                 if (cboxEnTop.Text == "") return;
@@ -964,7 +966,10 @@ namespace LoL_Assistant
         {
             // Ali
             SQLite db = SQLite.Instance;
-            DataTable dtAli = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+' FROM GameRepository WHERE ID in ('{nowGameID}') AND Team in ('Ali')
+            DataTable dtAli = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '조합-돌진', CompDefence as '조합-수비', CompPoke as '조합-포킹' FROM GameRepository
+              INNER JOIN Champs
+              ON GameRepository.Champ = Champs.KorName
+              WHERE ID in ('{nowGameID}') AND Team in ('Ali')
               ORDER BY CASE WHEN Position in ('Top') THEN '1'
                 WHEN Position in ('Jungle') THEN '2'
                 WHEN Position in ('Mid') THEN '3'
@@ -978,7 +983,10 @@ namespace LoL_Assistant
             }
 
             // En
-            DataTable dtEn = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+' FROM GameRepository WHERE ID in ('{nowGameID}') AND Team in ('En')
+            DataTable dtEn = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '조합-돌진', CompDefence as '조합-수비', CompPoke as '조합-포킹' FROM GameRepository
+              INNER JOIN Champs
+              ON GameRepository.Champ = Champs.KorName
+              WHERE ID in ('{nowGameID}') AND Team in ('En')
               ORDER BY CASE WHEN Position in ('Top') THEN '1'
                 WHEN Position in ('Jungle') THEN '2'
                 WHEN Position in ('Mid') THEN '3'
@@ -1015,7 +1023,46 @@ namespace LoL_Assistant
                 labMidLane.Text = string.Format("{0:0.##}", (aliMidLane - EnMidLane));
                 labAdLane.Text = string.Format("{0:0.##}", (aliAdLane - EnAdLane));
                 labSupLane.Text = string.Format("{0:0.##}", (aliSupLane - EnSupLane));
-                
+
+                int aliTopCompRush = int.Parse(dataGridView1.Rows[0].Cells["조합-돌진"].Value.ToString());
+                int aliJungleCompRush = int.Parse(dataGridView1.Rows[1].Cells["조합-돌진"].Value.ToString());
+                int aliMidCompRush = int.Parse(dataGridView1.Rows[2].Cells["조합-돌진"].Value.ToString());
+                int aliAdCompRush = int.Parse(dataGridView1.Rows[3].Cells["조합-돌진"].Value.ToString());
+                int aliSupCompRush = int.Parse(dataGridView1.Rows[4].Cells["조합-돌진"].Value.ToString());
+
+                int aliTopCompDefence = int.Parse(dataGridView1.Rows[0].Cells["조합-수비"].Value.ToString());
+                int aliJungleCompDefence = int.Parse(dataGridView1.Rows[1].Cells["조합-수비"].Value.ToString());
+                int aliMidCompDefence = int.Parse(dataGridView1.Rows[2].Cells["조합-수비"].Value.ToString());
+                int aliAdCompDefence = int.Parse(dataGridView1.Rows[3].Cells["조합-수비"].Value.ToString());
+                int aliSupCompDefence = int.Parse(dataGridView1.Rows[4].Cells["조합-수비"].Value.ToString());
+
+                int aliTopCompPoke = int.Parse(dataGridView1.Rows[0].Cells["조합-포킹"].Value.ToString());
+                int aliJungleCompPoke = int.Parse(dataGridView1.Rows[1].Cells["조합-포킹"].Value.ToString());
+                int aliMidCompPoke = int.Parse(dataGridView1.Rows[2].Cells["조합-포킹"].Value.ToString());
+                int aliAdCompPoke = int.Parse(dataGridView1.Rows[3].Cells["조합-포킹"].Value.ToString());
+                int aliSupCompPoke = int.Parse(dataGridView1.Rows[4].Cells["조합-포킹"].Value.ToString());
+
+                int enTopCompRush = int.Parse(dataGridView2.Rows[0].Cells["조합-돌진"].Value.ToString());
+                int enJungleCompRush = int.Parse(dataGridView2.Rows[1].Cells["조합-돌진"].Value.ToString());
+                int enMidCompRush = int.Parse(dataGridView2.Rows[2].Cells["조합-돌진"].Value.ToString());
+                int enAdCompRush = int.Parse(dataGridView2.Rows[3].Cells["조합-돌진"].Value.ToString());
+                int enSupCompRush = int.Parse(dataGridView2.Rows[4].Cells["조합-돌진"].Value.ToString());
+
+                int enTopCompDefence = int.Parse(dataGridView2.Rows[0].Cells["조합-수비"].Value.ToString());
+                int enJungleCompDefence = int.Parse(dataGridView2.Rows[1].Cells["조합-수비"].Value.ToString());
+                int enMidCompDefence = int.Parse(dataGridView2.Rows[2].Cells["조합-수비"].Value.ToString());
+                int enAdCompDefence = int.Parse(dataGridView2.Rows[3].Cells["조합-수비"].Value.ToString());
+                int enSupCompDefence = int.Parse(dataGridView2.Rows[4].Cells["조합-수비"].Value.ToString());
+
+                int enTopCompPoke = int.Parse(dataGridView2.Rows[0].Cells["조합-포킹"].Value.ToString());
+                int enJungleCompPoke = int.Parse(dataGridView2.Rows[1].Cells["조합-포킹"].Value.ToString());
+                int enMidCompPoke = int.Parse(dataGridView2.Rows[2].Cells["조합-포킹"].Value.ToString());
+                int enAdCompPoke = int.Parse(dataGridView2.Rows[3].Cells["조합-포킹"].Value.ToString());
+                int enSupCompPoke = int.Parse(dataGridView2.Rows[4].Cells["조합-포킹"].Value.ToString());
+
+                labCompRush.Text = ((aliTopCompRush + aliJungleCompRush + aliMidCompRush + aliAdCompRush + aliSupCompRush) - (enTopCompRush + enJungleCompRush + enMidCompRush + enAdCompRush + enSupCompRush)).ToString();
+                labCompDefence.Text = ((aliTopCompDefence + aliJungleCompDefence + aliMidCompDefence + aliAdCompDefence + aliSupCompDefence) - (enTopCompDefence + enJungleCompDefence + enMidCompDefence + enAdCompDefence + enSupCompDefence)).ToString();
+                labCompPoke.Text = ((aliTopCompPoke + aliJungleCompPoke + aliMidCompPoke + aliAdCompPoke + aliSupCompPoke) - (enTopCompPoke + enJungleCompPoke + enMidCompPoke + enAdCompPoke + enSupCompPoke)).ToString();
             }
             catch (Exception ex)
             {
