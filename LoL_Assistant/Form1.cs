@@ -1207,7 +1207,7 @@ namespace LoL_Assistant
         {
             // Ali
             SQLite db = SQLite.Instance;
-            DataTable dtAli = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '조합-돌진', CompDefence as '조합-수비', CompPoke as '조합-포킹' FROM GameRepository
+            DataTable dtAli = db.ReadTable($@"SELECT Champ as 챔피언, LineRate as 라인전, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '돌진', CompDefence as '수비', CompPoke as '포킹', CompAss as '암살', CompSplit as '스플릿', CompDive as '다이브', Globalult as '글로벌궁' FROM GameRepository
               INNER JOIN Champs
               ON GameRepository.Champ = Champs.KorName
               WHERE ID in ('{nowGameID}') AND Team in ('Ali')
@@ -1224,7 +1224,7 @@ namespace LoL_Assistant
             }
 
             // En
-            DataTable dtEn = db.ReadTable($@"SELECT Position as 포지션, Champ as 챔피언, LineRate as 라인전우위, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '조합-돌진', CompDefence as '조합-수비', CompPoke as '조합-포킹' FROM GameRepository
+            DataTable dtEn = db.ReadTable($@"SELECT Champ as 챔피언, LineRate as 라인전, Trend1 as '0-25', Trend2 as '25-30', Trend3 as '30-35', Trend4 as '35-40', Trend5 as '40+', CompRush as '돌진', CompDefence as '수비', CompPoke as '포킹', CompAss as '암살', CompSplit as '스플릿', CompDive as '다이브', Globalult as '글로벌궁' FROM GameRepository
               INNER JOIN Champs
               ON GameRepository.Champ = Champs.KorName
               WHERE ID in ('{nowGameID}') AND Team in ('En')
@@ -1247,17 +1247,17 @@ namespace LoL_Assistant
         {
             try
             {
-                double aliTopLane = double.Parse(dataGridView1.Rows[0].Cells["라인전우위"].Value.ToString());
-                double aliJungleLane = double.Parse(dataGridView1.Rows[1].Cells["라인전우위"].Value.ToString());
-                double aliMidLane = double.Parse(dataGridView1.Rows[2].Cells["라인전우위"].Value.ToString());
-                double aliAdLane = double.Parse(dataGridView1.Rows[3].Cells["라인전우위"].Value.ToString());
-                double aliSupLane = double.Parse(dataGridView1.Rows[4].Cells["라인전우위"].Value.ToString());
+                double aliTopLane = double.Parse(dataGridView1.Rows[0].Cells["라인전"].Value.ToString());
+                double aliJungleLane = double.Parse(dataGridView1.Rows[1].Cells["라인전"].Value.ToString());
+                double aliMidLane = double.Parse(dataGridView1.Rows[2].Cells["라인전"].Value.ToString());
+                double aliAdLane = double.Parse(dataGridView1.Rows[3].Cells["라인전"].Value.ToString());
+                double aliSupLane = double.Parse(dataGridView1.Rows[4].Cells["라인전"].Value.ToString());
 
-                double EnTopLane = double.Parse(dataGridView2.Rows[0].Cells["라인전우위"].Value.ToString());
-                double EnJungleLane = double.Parse(dataGridView2.Rows[1].Cells["라인전우위"].Value.ToString());
-                double EnMidLane = double.Parse(dataGridView2.Rows[2].Cells["라인전우위"].Value.ToString());
-                double EnAdLane = double.Parse(dataGridView2.Rows[3].Cells["라인전우위"].Value.ToString());
-                double EnSupLane = double.Parse(dataGridView2.Rows[4].Cells["라인전우위"].Value.ToString());
+                double EnTopLane = double.Parse(dataGridView2.Rows[0].Cells["라인전"].Value.ToString());
+                double EnJungleLane = double.Parse(dataGridView2.Rows[1].Cells["라인전"].Value.ToString());
+                double EnMidLane = double.Parse(dataGridView2.Rows[2].Cells["라인전"].Value.ToString());
+                double EnAdLane = double.Parse(dataGridView2.Rows[3].Cells["라인전"].Value.ToString());
+                double EnSupLane = double.Parse(dataGridView2.Rows[4].Cells["라인전"].Value.ToString());
 
                 labTopLane.Text = string.Format("{0:0.##}", (aliTopLane - EnTopLane));
                 labJungleLane.Text = string.Format("{0:0.##}", (aliJungleLane - EnJungleLane));
@@ -1265,41 +1265,41 @@ namespace LoL_Assistant
                 labAdLane.Text = string.Format("{0:0.##}", (aliAdLane - EnAdLane));
                 labSupLane.Text = string.Format("{0:0.##}", (aliSupLane - EnSupLane));
 
-                int aliTopCompRush = int.Parse(dataGridView1.Rows[0].Cells["조합-돌진"].Value.ToString());
-                int aliJungleCompRush = int.Parse(dataGridView1.Rows[1].Cells["조합-돌진"].Value.ToString());
-                int aliMidCompRush = int.Parse(dataGridView1.Rows[2].Cells["조합-돌진"].Value.ToString());
-                int aliAdCompRush = int.Parse(dataGridView1.Rows[3].Cells["조합-돌진"].Value.ToString());
-                int aliSupCompRush = int.Parse(dataGridView1.Rows[4].Cells["조합-돌진"].Value.ToString());
+                int aliTopCompRush = int.Parse(dataGridView1.Rows[0].Cells["돌진"].Value.ToString());
+                int aliJungleCompRush = int.Parse(dataGridView1.Rows[1].Cells["돌진"].Value.ToString());
+                int aliMidCompRush = int.Parse(dataGridView1.Rows[2].Cells["돌진"].Value.ToString());
+                int aliAdCompRush = int.Parse(dataGridView1.Rows[3].Cells["돌진"].Value.ToString());
+                int aliSupCompRush = int.Parse(dataGridView1.Rows[4].Cells["돌진"].Value.ToString());
 
-                int aliTopCompDefence = int.Parse(dataGridView1.Rows[0].Cells["조합-수비"].Value.ToString());
-                int aliJungleCompDefence = int.Parse(dataGridView1.Rows[1].Cells["조합-수비"].Value.ToString());
-                int aliMidCompDefence = int.Parse(dataGridView1.Rows[2].Cells["조합-수비"].Value.ToString());
-                int aliAdCompDefence = int.Parse(dataGridView1.Rows[3].Cells["조합-수비"].Value.ToString());
-                int aliSupCompDefence = int.Parse(dataGridView1.Rows[4].Cells["조합-수비"].Value.ToString());
+                int aliTopCompDefence = int.Parse(dataGridView1.Rows[0].Cells["수비"].Value.ToString());
+                int aliJungleCompDefence = int.Parse(dataGridView1.Rows[1].Cells["수비"].Value.ToString());
+                int aliMidCompDefence = int.Parse(dataGridView1.Rows[2].Cells["수비"].Value.ToString());
+                int aliAdCompDefence = int.Parse(dataGridView1.Rows[3].Cells["수비"].Value.ToString());
+                int aliSupCompDefence = int.Parse(dataGridView1.Rows[4].Cells["수비"].Value.ToString());
 
-                int aliTopCompPoke = int.Parse(dataGridView1.Rows[0].Cells["조합-포킹"].Value.ToString());
-                int aliJungleCompPoke = int.Parse(dataGridView1.Rows[1].Cells["조합-포킹"].Value.ToString());
-                int aliMidCompPoke = int.Parse(dataGridView1.Rows[2].Cells["조합-포킹"].Value.ToString());
-                int aliAdCompPoke = int.Parse(dataGridView1.Rows[3].Cells["조합-포킹"].Value.ToString());
-                int aliSupCompPoke = int.Parse(dataGridView1.Rows[4].Cells["조합-포킹"].Value.ToString());
+                int aliTopCompPoke = int.Parse(dataGridView1.Rows[0].Cells["포킹"].Value.ToString());
+                int aliJungleCompPoke = int.Parse(dataGridView1.Rows[1].Cells["포킹"].Value.ToString());
+                int aliMidCompPoke = int.Parse(dataGridView1.Rows[2].Cells["포킹"].Value.ToString());
+                int aliAdCompPoke = int.Parse(dataGridView1.Rows[3].Cells["포킹"].Value.ToString());
+                int aliSupCompPoke = int.Parse(dataGridView1.Rows[4].Cells["포킹"].Value.ToString());
 
-                int enTopCompRush = int.Parse(dataGridView2.Rows[0].Cells["조합-돌진"].Value.ToString());
-                int enJungleCompRush = int.Parse(dataGridView2.Rows[1].Cells["조합-돌진"].Value.ToString());
-                int enMidCompRush = int.Parse(dataGridView2.Rows[2].Cells["조합-돌진"].Value.ToString());
-                int enAdCompRush = int.Parse(dataGridView2.Rows[3].Cells["조합-돌진"].Value.ToString());
-                int enSupCompRush = int.Parse(dataGridView2.Rows[4].Cells["조합-돌진"].Value.ToString());
+                int enTopCompRush = int.Parse(dataGridView2.Rows[0].Cells["돌진"].Value.ToString());
+                int enJungleCompRush = int.Parse(dataGridView2.Rows[1].Cells["돌진"].Value.ToString());
+                int enMidCompRush = int.Parse(dataGridView2.Rows[2].Cells["돌진"].Value.ToString());
+                int enAdCompRush = int.Parse(dataGridView2.Rows[3].Cells["돌진"].Value.ToString());
+                int enSupCompRush = int.Parse(dataGridView2.Rows[4].Cells["돌진"].Value.ToString());
 
-                int enTopCompDefence = int.Parse(dataGridView2.Rows[0].Cells["조합-수비"].Value.ToString());
-                int enJungleCompDefence = int.Parse(dataGridView2.Rows[1].Cells["조합-수비"].Value.ToString());
-                int enMidCompDefence = int.Parse(dataGridView2.Rows[2].Cells["조합-수비"].Value.ToString());
-                int enAdCompDefence = int.Parse(dataGridView2.Rows[3].Cells["조합-수비"].Value.ToString());
-                int enSupCompDefence = int.Parse(dataGridView2.Rows[4].Cells["조합-수비"].Value.ToString());
+                int enTopCompDefence = int.Parse(dataGridView2.Rows[0].Cells["수비"].Value.ToString());
+                int enJungleCompDefence = int.Parse(dataGridView2.Rows[1].Cells["수비"].Value.ToString());
+                int enMidCompDefence = int.Parse(dataGridView2.Rows[2].Cells["수비"].Value.ToString());
+                int enAdCompDefence = int.Parse(dataGridView2.Rows[3].Cells["수비"].Value.ToString());
+                int enSupCompDefence = int.Parse(dataGridView2.Rows[4].Cells["수비"].Value.ToString());
 
-                int enTopCompPoke = int.Parse(dataGridView2.Rows[0].Cells["조합-포킹"].Value.ToString());
-                int enJungleCompPoke = int.Parse(dataGridView2.Rows[1].Cells["조합-포킹"].Value.ToString());
-                int enMidCompPoke = int.Parse(dataGridView2.Rows[2].Cells["조합-포킹"].Value.ToString());
-                int enAdCompPoke = int.Parse(dataGridView2.Rows[3].Cells["조합-포킹"].Value.ToString());
-                int enSupCompPoke = int.Parse(dataGridView2.Rows[4].Cells["조합-포킹"].Value.ToString());
+                int enTopCompPoke = int.Parse(dataGridView2.Rows[0].Cells["포킹"].Value.ToString());
+                int enJungleCompPoke = int.Parse(dataGridView2.Rows[1].Cells["포킹"].Value.ToString());
+                int enMidCompPoke = int.Parse(dataGridView2.Rows[2].Cells["포킹"].Value.ToString());
+                int enAdCompPoke = int.Parse(dataGridView2.Rows[3].Cells["포킹"].Value.ToString());
+                int enSupCompPoke = int.Parse(dataGridView2.Rows[4].Cells["포킹"].Value.ToString());
 
                 labCompRush.Text = ((aliTopCompRush + aliJungleCompRush + aliMidCompRush + aliAdCompRush + aliSupCompRush) - (enTopCompRush + enJungleCompRush + enMidCompRush + enAdCompRush + enSupCompRush)).ToString();
                 labCompDefence.Text = ((aliTopCompDefence + aliJungleCompDefence + aliMidCompDefence + aliAdCompDefence + aliSupCompDefence) - (enTopCompDefence + enJungleCompDefence + enMidCompDefence + enAdCompDefence + enSupCompDefence)).ToString();
