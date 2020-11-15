@@ -3,6 +3,7 @@ using LOL_Assistant;
 using Newtonsoft.Json.Linq;
 using NSoup;
 using NSoup.Nodes;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,16 +69,17 @@ namespace LoL_Assistant
                             if (p.ProcessName.IndexOf("League of Legends") >= 0)
                             {
                                 var rand = new Random();
-                                int ranNum = rand.Next(0, 4);
+                                int ranNum = rand.Next(0, 2);
 
                                 if (ranNum == 0)
-                                    simpleSound = new SoundPlayer(Resources.맵봐맵);
+                                    simpleSound = new SoundPlayer(Resources.정글위치확인);
                                 else if (ranNum == 1)
                                     simpleSound = new SoundPlayer(Resources.미니맵);
-                                else if (ranNum == 2)
-                                    simpleSound = new SoundPlayer(Resources.정글위치확인);
-                                else if (ranNum == 3)
-                                    simpleSound = new SoundPlayer(Resources.췤);
+                                //else if (ranNum == 2)
+                                //    simpleSound = new SoundPlayer(Resources.맵봐맵);
+                                //else if (ranNum == 3)
+                                //    simpleSound = new SoundPlayer(Resources.췤);
+
                                 simpleSound.Play();
                             }
 
@@ -124,148 +126,158 @@ namespace LoL_Assistant
             nowGameSaved = false;
             tboxComment.Text = "";
             tboxVsChamp.Text = "";
-            tboxVs1.Text = "";
-            tboxVs2.Text = "";
-            tboxVs3.Text = "";
+            tboxVsAd1.Text = "";
+            tboxVsAd2.Text = "";
+            tboxVsAd3.Text = "";
 
-            SQLite db = SQLite.Instance;
-            DataTable dt = db.ReadTable($"SELECT * FROM GameInfo WHERE Date in ('{dateTimePicker1.Value.ToString("yyyy-MM-dd")}') ORDER BY Number ASC");
-
-            if (dt.Rows.Count == 0)
+            try
             {
-                nowGameID = "";
-                nowGameNumber = 0;
-                cboxGameNumber.Text = "";
-                return;
-            }
+                SQLite db = SQLite.Instance;
+                DataTable dt = db.ReadTable($"SELECT * FROM GameInfo WHERE Date in ('{dateTimePicker1.Value.ToString("yyyy-MM-dd")}') ORDER BY Number ASC");
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                cboxGameNumber.Items.Add(dr["Number"]);
-            }
-
-            
-            nowGameNumber = number != 0 ? number : (int)dt.Rows[dt.Rows.Count - 1]["Number"];
-            nowGameID = number != 0 ? (string)dt.Rows[number-1]["ID"] : (string)dt.Rows[dt.Rows.Count - 1]["ID"];
-            cboxGameNumber.Text = nowGameNumber.ToString();
-
-            nowGameSaved = number != 0 ? (bool)dt.Rows[number - 1]["Save"] : (bool)dt.Rows[dt.Rows.Count - 1]["Save"];
-
-            // Step 2.
-            dt = db.ReadTable($"SELECT * FROM GameRepository WHERE ID in ('{nowGameID}')");
-            if (dt.Rows.Count == 0)
-            {
-                cboxAliTop.Text = "";
-                cboxAliJungle.Text = "";
-                cboxAliMid.Text = "";
-                cboxAliAd.Text = "";
-                cboxAliSup.Text = "";
-                cboxEnTop.Text = "";
-                cboxEnJungle.Text = "";
-                cboxEnMid.Text = "";
-                cboxEnAd.Text = "";
-                cboxEnSup.Text = "";
-                return;
-            }
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                string team = (string)dr["Team"];
-                string pos = (string)dr["Position"];
-                string champ = (string)dr["Champ"];
-
-                if (team == "Ali")
+                if (dt.Rows.Count == 0)
                 {
-                    if (pos == "Top")
+                    nowGameID = "";
+                    nowGameNumber = 0;
+                    cboxGameNumber.Text = "";
+                    return;
+                }
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    cboxGameNumber.Items.Add(dr["Number"]);
+                }
+
+
+                nowGameNumber = number != 0 ? number : (int)dt.Rows[dt.Rows.Count - 1]["Number"];
+                nowGameID = number != 0 ? (string)dt.Rows[number - 1]["ID"] : (string)dt.Rows[dt.Rows.Count - 1]["ID"];
+                cboxGameNumber.Text = nowGameNumber.ToString();
+
+                nowGameSaved = number != 0 ? (bool)dt.Rows[number - 1]["Save"] : (bool)dt.Rows[dt.Rows.Count - 1]["Save"];
+
+                // Step 2.
+                dt = db.ReadTable($"SELECT * FROM GameRepository WHERE ID in ('{nowGameID}')");
+                if (dt.Rows.Count == 0)
+                {
+                    cboxAliTop.Text = "";
+                    cboxAliJungle.Text = "";
+                    cboxAliMid.Text = "";
+                    cboxAliAd.Text = "";
+                    cboxAliSup.Text = "";
+                    cboxEnTop.Text = "";
+                    cboxEnJungle.Text = "";
+                    cboxEnMid.Text = "";
+                    cboxEnAd.Text = "";
+                    cboxEnSup.Text = "";
+                    return;
+                }
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    string team = (string)dr["Team"];
+                    string pos = (string)dr["Position"];
+                    string champ = (string)dr["Champ"];
+
+                    if (team == "Ali")
                     {
-                        cboxAliTop.Text = champ;
+                        if (pos == "Top")
+                        {
+                            cboxAliTop.Text = champ;
+                        }
+                        else if (pos == "Jungle")
+                        {
+                            cboxAliJungle.Text = champ;
+                        }
+                        else if (pos == "Mid")
+                        {
+                            cboxAliMid.Text = champ;
+                        }
+                        else if (pos == "Ad")
+                        {
+                            cboxAliAd.Text = champ;
+                        }
+                        else if (pos == "Sup")
+                        {
+                            cboxAliSup.Text = champ;
+                        }
                     }
-                    else if (pos == "Jungle")
+                    else if (team == "En")
                     {
-                        cboxAliJungle.Text = champ;
-                    }
-                    else if (pos == "Mid")
-                    {
-                        cboxAliMid.Text = champ;
-                    }
-                    else if (pos == "Ad")
-                    {
-                        cboxAliAd.Text = champ;
-                    }
-                    else if (pos == "Sup")
-                    {
-                        cboxAliSup.Text = champ;
+                        if (pos == "Top")
+                        {
+                            cboxEnTop.Text = champ;
+                        }
+                        else if (pos == "Jungle")
+                        {
+                            cboxEnJungle.Text = champ;
+                        }
+                        else if (pos == "Mid")
+                        {
+                            cboxEnMid.Text = champ;
+                        }
+                        else if (pos == "Ad")
+                        {
+                            cboxEnAd.Text = champ;
+                        }
+                        else if (pos == "Sup")
+                        {
+                            cboxEnSup.Text = champ;
+                        }
                     }
                 }
-                else if (team == "En")
-                {
-                    if (pos == "Top")
-                    {
-                        cboxEnTop.Text = champ;
-                    }
-                    else if (pos == "Jungle")
-                    {
-                        cboxEnJungle.Text = champ;
-                    }
-                    else if (pos == "Mid")
-                    {
-                        cboxEnMid.Text = champ;
-                    }
-                    else if (pos == "Ad")
-                    {
-                        cboxEnAd.Text = champ;
-                    }
-                    else if (pos == "Sup")
-                    {
-                        cboxEnSup.Text = champ;
-                    }
-                }
-                else
-                {
-                    throw new Exception("Unknown Error...");
-                }
-            }
 
-            // Step 3.
-            dt = db.ReadTable($"SELECT Comment, Save FROM GameInfo WHERE ID in ('{nowGameID}')");
-            tboxComment.Text = (string)dt.Rows[0]["Comment"];
+                // Step 3.
+                dt = db.ReadTable($"SELECT Comment, Save FROM GameInfo WHERE ID in ('{nowGameID}')");
+                tboxComment.Text = (string)dt.Rows[0]["Comment"];
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
         }
 
         public void LoadChamps()
         {
-            SQLite db = SQLite.Instance;
-
-            DataTable dt = db.ReadTable($"SELECT * FROM Champs ORDER BY EnName");
-            if (dt.Rows.Count > 0)
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    cboxAliTop.Items.Add((string)dr["KorName"]);
-                    cboxAliJungle.Items.Add((string)dr["KorName"]);
-                    cboxAliMid.Items.Add((string)dr["KorName"]);
-                    cboxAliAd.Items.Add((string)dr["KorName"]);
-                    cboxAliSup.Items.Add((string)dr["KorName"]);
+                SQLite db = SQLite.Instance;
 
-                    cboxEnTop.Items.Add((string)dr["KorName"]);
-                    cboxEnJungle.Items.Add((string)dr["KorName"]);
-                    cboxEnMid.Items.Add((string)dr["KorName"]);
-                    cboxEnAd.Items.Add((string)dr["KorName"]);
-                    cboxEnSup.Items.Add((string)dr["KorName"]);
+                DataTable dt = db.ReadTable($"SELECT * FROM Champs ORDER BY EnName");
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        cboxAliTop.Items.Add((string)dr["KorName"]);
+                        cboxAliJungle.Items.Add((string)dr["KorName"]);
+                        cboxAliMid.Items.Add((string)dr["KorName"]);
+                        cboxAliAd.Items.Add((string)dr["KorName"]);
+                        cboxAliSup.Items.Add((string)dr["KorName"]);
+
+                        cboxEnTop.Items.Add((string)dr["KorName"]);
+                        cboxEnJungle.Items.Add((string)dr["KorName"]);
+                        cboxEnMid.Items.Add((string)dr["KorName"]);
+                        cboxEnAd.Items.Add((string)dr["KorName"]);
+                        cboxEnSup.Items.Add((string)dr["KorName"]);
+                    }
+                }
+
+                dt = db.ReadTable($"SELECT * FROM MyInfo WHERE IsMain=true");
+                if (dt.Rows.Count > 0)
+                {
+                    cboxMainPos.Text = (string)dt.Rows[0]["Position"];
+                    tboxMainPos.Text = (string)dt.Rows[0]["Champ"];
+                }
+
+                dt = db.ReadTable($"SELECT * FROM MyInfo WHERE IsMain=false");
+                if (dt.Rows.Count > 0)
+                {
+                    cboxSubPos.Text = (string)dt.Rows[0]["Position"];
+                    tboxSubPos.Text = (string)dt.Rows[0]["Champ"];
                 }
             }
-
-            dt = db.ReadTable($"SELECT * FROM MyInfo WHERE IsMain=true");
-            if (dt.Rows.Count > 0)
+            catch (Exception ex)
             {
-                cboxMainPos.Text = (string)dt.Rows[0]["Position"];
-                tboxMainPos.Text = (string)dt.Rows[0]["Champ"];
-            }
-
-            dt = db.ReadTable($"SELECT * FROM MyInfo WHERE IsMain=false");
-            if (dt.Rows.Count > 0)
-            {
-                cboxSubPos.Text = (string)dt.Rows[0]["Position"];
-                tboxSubPos.Text = (string)dt.Rows[0]["Champ"];
+                Log.Error(ex.ToString());
             }
         }
 
@@ -299,7 +311,7 @@ namespace LoL_Assistant
             }
             catch (WebException wex)
             {
-                Console.WriteLine(wex);
+                Log.Error(wex.ToString());
             }
 
             return doc;
@@ -319,7 +331,7 @@ namespace LoL_Assistant
                 if (script.Data.IndexOf("Trend-Detail-GameLengthWinRateGraph") >= 0)
                 {
                     resSplit = script.Data.Split('[');
-                    Console.WriteLine(resSplit[2]);
+                    Log.Information(resSplit[2]);
 
                     break;
                 }
@@ -328,11 +340,11 @@ namespace LoL_Assistant
             Regex r = new Regex("{\"y\":(?'ONE'[0-9]*\\.?[0-9]*).*{\"y\":(?'TWO'[0-9]*\\.?[0-9]*).*{\"y\":(?'THREE'[0-9]*\\.?[0-9]*).*{\"y\":(?'FOUR'[0-9]*\\.?[0-9]*).*{\"y\":(?'FIVE'[0-9]*\\.?[0-9]*).*");
             Match m = r.Match(resSplit[2]);
 
-            string one = "0";
-            string two = "0";
-            string three = "0";
-            string four = "0";
-            string five = "0";
+            string one = "50";
+            string two = "50";
+            string three = "50";
+            string four = "50";
+            string five = "50";
 
             if (m.Success)
             {
@@ -365,61 +377,75 @@ namespace LoL_Assistant
         public void SetTrend(string team, string pos, string champ, List<string> trend)
         {
             SQLite db = SQLite.Instance;
-            db.Write($"DELETE FROM GameRepository WHERE ID in ('{nowGameID}') AND Team in ('{team}') AND Position in ('{pos}')");
-            db.Write($"INSERT INTO GameRepository (ID, Team, Position, Champ, Trend1, Trend2, Trend3, Trend4, Trend5) VALUES ('{nowGameID}', '{team}', '{pos}', '{champ}', {trend[0]}, {trend[1]}, {trend[2]}, {trend[3]}, {trend[4]})");
+            try
+            {
+                db.Write($"DELETE FROM GameRepository WHERE ID in ('{nowGameID}') AND Team in ('{team}') AND Position in ('{pos}')");
+                db.Write($"INSERT INTO GameRepository (ID, Team, Position, Champ, Trend1, Trend2, Trend3, Trend4, Trend5) VALUES ('{nowGameID}', '{team}', '{pos}', '{champ}', {trend[0]}, {trend[1]}, {trend[2]}, {trend[3]}, {trend[4]})");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
         }
 
         public List<string> GetLineRate(string pos, string AliOpID, string EnOpID)
         {
             List<string> ret = new List<string>();
 
-            var apiUrl = $"http://www.op.gg/champion/ajax/statistics/counterChampion/championId={AliOpID}&targetChampionId={EnOpID}&position={pos}";
-            Document doc = GetResponse(apiUrl);
-
-            string tmpTr = "";
-
-            foreach (var tr in doc.Select("tr"))
+            try
             {
-                if (pos != "jungle")
+                var apiUrl = $"http://www.op.gg/champion/ajax/statistics/counterChampion/championId={AliOpID}&targetChampionId={EnOpID}&position={pos}";
+                Document doc = GetResponse(apiUrl);
+
+                string tmpTr = "";
+
+                foreach (var tr in doc.Select("tr"))
                 {
-                    if (tr.Children.Text.IndexOf("Lane Kill Rate") >= 0 || tr.Children.Text.IndexOf("라인킬 확률") >= 0)
+                    if (pos != "jungle")
                     {
-                        tmpTr = tr.Children.Text;
-                        break;
+                        if (tr.Children.Text.IndexOf("Lane Kill Rate") >= 0 || tr.Children.Text.IndexOf("라인킬 확률") >= 0)
+                        {
+                            tmpTr = tr.Children.Text;
+                            break;
+                        }
+                    }
+                    else // == jungle
+                    {
+                        if (tr.Children.Text.IndexOf("Kill Participation") >= 0 || tr.Children.Text.IndexOf("킬관여율") >= 0)
+                        {
+                            tmpTr = tr.Children.Text;
+                            break;
+                        }
+                    }
+
+                }
+
+                Regex r = new Regex(@"(?'ALI'[0-9]*\.?[0-9]*)\%{1} .* (?'EN'[0-9]*\.?[0-9]*)\%{1}");
+                Match m = r.Match(tmpTr);
+
+                string ali = "50";
+                string en = "50";
+
+                if (m.Success)
+                {
+                    string[] groupNames = r.GetGroupNames();
+
+                    foreach (var name in groupNames)
+                    {
+                        if (name == "ALI")
+                            ali = m.Groups[name].Value;
+                        else if (name == "EN")
+                            en = m.Groups[name].Value;
                     }
                 }
-                else // == jungle
-                {
-                    if (tr.Children.Text.IndexOf("Kill Participation") >= 0 || tr.Children.Text.IndexOf("킬관여율") >= 0)
-                    {
-                        tmpTr = tr.Children.Text;
-                        break;
-                    }
-                }
-                
+
+                ret.Add(ali);
+                ret.Add(en);
             }
-
-            Regex r = new Regex(@"(?'ALI'[0-9]*\.?[0-9]*)\%{1} .* (?'EN'[0-9]*\.?[0-9]*)\%{1}");
-            Match m = r.Match(tmpTr);
-
-            string ali = "0";
-            string en = "0";
-
-            if (m.Success)
+            catch (Exception ex)
             {
-                string[] groupNames = r.GetGroupNames();
-
-                foreach (var name in groupNames)
-                {
-                    if (name == "ALI")
-                        ali = m.Groups[name].Value;
-                    else if (name == "EN")
-                        en = m.Groups[name].Value;
-                }
+                Log.Error(ex.ToString());
             }
-
-            ret.Add(ali);
-            ret.Add(en);
 
             return ret;
         }
@@ -501,7 +527,14 @@ namespace LoL_Assistant
             bool isEnAdChanged = false;
             bool isEnSupChanged = false;
 
-            if (!cbox.Items.Contains(cbox.Text)) return;
+            bool cancel = false;
+            string[] cancelString = { "50", "50", "50", "50", "50" };
+            string[] cancelString2 = { "50", "50" };
+
+            if (!cbox.Items.Contains(cbox.Text))
+            {
+                cancel = true;
+            }
 
             if (cboxAliTop.Text != lastAliTop)
             {
@@ -560,105 +593,198 @@ namespace LoL_Assistant
             {
                 if (nowGameSaved) return;
 
-                if (cbox.Name.IndexOf("Ali") >= 0)
+                try
                 {
-                    if (cbox.Name.IndexOf("Top") >= 0 && isAliTopChanged)
+                    if (cbox.Name.IndexOf("Ali") >= 0)
                     {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
+                        if (cbox.Name.IndexOf("Top") >= 0 && isAliTopChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
 
-                        List<string> trend = GetTrend(engName, "top");
-                        SetTrend("Ali", "Top", cboxtext, trend);
+                                trend = GetTrend(engName, "top");
+                            }
+
+                            SetTrend("Ali", "Top", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Jungle") >= 0 && isAliJungleChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "jungle");
+                            }
+
+                            SetTrend("Ali", "Jungle", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Mid") >= 0 && isAliMidChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "mid");
+                            }
+
+                            SetTrend("Ali", "Mid", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Ad") >= 0 && isAliAdChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "bot");
+                            }
+
+                            SetTrend("Ali", "Ad", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Sup") >= 0 && isAliSupChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "support");
+                            }
+
+                            SetTrend("Ali", "Sup", cboxtext, trend);
+                        }
                     }
-                    else if (cbox.Name.IndexOf("Jungle") >= 0 && isAliJungleChanged)
+                    else if (cbox.Name.IndexOf("En") >= 0)
                     {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
+                        if (cbox.Name.IndexOf("Top") >= 0 && isEnTopChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
 
-                        List<string> trend = GetTrend(engName, "jungle");
-                        SetTrend("Ali", "Jungle", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Mid") >= 0 && isAliMidChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
+                                trend = GetTrend(engName, "top");
+                            }
 
-                        List<string> trend = GetTrend(engName, "mid");
-                        SetTrend("Ali", "Mid", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Ad") >= 0 && isAliAdChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
+                            SetTrend("En", "Top", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Jungle") >= 0 && isEnJungleChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
 
-                        List<string> trend = GetTrend(engName, "bot");
-                        SetTrend("Ali", "Ad", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Sup") >= 0 && isAliSupChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
+                                trend = GetTrend(engName, "jungle");
+                            }
 
-                        List<string> trend = GetTrend(engName, "support");
-                        SetTrend("Ali", "Sup", cboxtext, trend);
+                            SetTrend("En", "Jungle", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Mid") >= 0 && isEnMidChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "mid");
+                            }
+
+                            SetTrend("En", "Mid", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Ad") >= 0 && isEnAdChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "bot");
+                            }
+
+                            SetTrend("En", "Ad", cboxtext, trend);
+                        }
+                        else if (cbox.Name.IndexOf("Sup") >= 0 && isEnSupChanged)
+                        {
+                            List<string> trend;
+                            if (cancel)
+                            {
+                                trend = new List<string>(cancelString);
+                            }
+                            else
+                            {
+                                SQLite db = SQLite.Instance;
+                                DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
+                                string engName = (string)dt.Rows[0]["EnName"];
+
+                                trend = GetTrend(engName, "support");
+                            }
+
+                            SetTrend("En", "Sup", cboxtext, trend);
+                        }
                     }
                 }
-                else if (cbox.Name.IndexOf("En") >= 0)
+                catch (Exception ex)
                 {
-                    if (cbox.Name.IndexOf("Top") >= 0 && isEnTopChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
-
-                        List<string> trend = GetTrend(engName, "top");
-                        SetTrend("En", "Top", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Jungle") >= 0 && isEnJungleChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
-
-                        List<string> trend = GetTrend(engName, "jungle");
-                        SetTrend("En", "Jungle", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Mid") >= 0 && isEnMidChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
-
-                        List<string> trend = GetTrend(engName, "mid");
-                        SetTrend("En", "Mid", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Ad") >= 0 && isEnAdChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
-
-                        List<string> trend = GetTrend(engName, "bot");
-                        SetTrend("En", "Ad", cboxtext, trend);
-                    }
-                    else if (cbox.Name.IndexOf("Sup") >= 0 && isEnSupChanged)
-                    {
-                        SQLite db = SQLite.Instance;
-                        DataTable dt = db.ReadTable($"SELECT EnName FROM Champs WHERE KorName in ('{cboxtext}')");
-                        string engName = (string)dt.Rows[0]["EnName"];
-
-                        List<string> trend = GetTrend(engName, "support");
-                        SetTrend("En", "Sup", cboxtext, trend);
-                    }
-                }
-                else
-                {
-                    throw new Exception("Unknown Exception...");
+                    Log.Error(ex.ToString());
                 }
             });
 
@@ -677,288 +803,401 @@ namespace LoL_Assistant
             {
                 if (nowGameSaved) return;
 
-                if ((isAliTopChanged || isEnTopChanged) && cboxAliTopText != "" && cboxEnTopText != "")
+                try
                 {
-                    SQLite db = SQLite.Instance;
-                    DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliTopText}')");
-                    string AliOpID = (string)dt.Rows[0]["OpggID"];
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnTopText}')");
-                    string EnOpID = (string)dt.Rows[0]["OpggID"];
-
-                    List<string> lineRate = GetLineRate("top", AliOpID, EnOpID);
-                    SetLineRate("Top", lineRate);
-                }
-                else if ((isAliJungleChanged || isEnJungleChanged) && cboxAliJungleText != "" && cboxEnJungleText != "")
-                {
-                    SQLite db = SQLite.Instance;
-                    DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliJungleText}')");
-                    string AliOpID = (string)dt.Rows[0]["OpggID"];
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnJungleText}')");
-                    string EnOpID = (string)dt.Rows[0]["OpggID"];
-
-                    List<string> lineRate = GetLineRate("jungle", AliOpID, EnOpID);
-                    SetLineRate("Jungle", lineRate);
-                }
-                else if ((isAliMidChanged || isEnMidChanged) && cboxAliMidText != "" && cboxEnMidText != "")
-                {
-                    SQLite db = SQLite.Instance;
-                    DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliMidText}')");
-                    string AliOpID = (string)dt.Rows[0]["OpggID"];
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnMidText}')");
-                    string EnOpID = (string)dt.Rows[0]["OpggID"];
-
-                    List<string> lineRate = GetLineRate("mid", AliOpID, EnOpID);
-                    SetLineRate("Mid", lineRate);
-                }
-                else if ((isAliAdChanged || isEnAdChanged) && cboxAliAdText != "" && cboxEnAdText != "")
-                {
-                    SQLite db = SQLite.Instance;
-                    DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliAdText}')");
-                    string AliOpID = (string)dt.Rows[0]["OpggID"];
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnAdText}')");
-                    string EnOpID = (string)dt.Rows[0]["OpggID"];
-
-                    List<string> lineRate = GetLineRate("adc", AliOpID, EnOpID);
-                    SetLineRate("Ad", lineRate);
-                }
-                else if ((isAliSupChanged || isEnSupChanged) && cboxAliSupText != "" && cboxEnSupText != "")
-                {
-                    SQLite db = SQLite.Instance;
-                    DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliSupText}')");
-                    string AliOpID = (string)dt.Rows[0]["OpggID"];
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnSupText}')");
-                    string EnOpID = (string)dt.Rows[0]["OpggID"];
-
-                    List<string> lineRate = GetLineRate("support", AliOpID, EnOpID);
-                    SetLineRate("Sup", lineRate);
-                }
-            });
-
-            LoadDataGridView();
-
-            RecommendChamp();
-        }
-
-        async public void RecommendChamp()
-        {
-            List<VsChamp> listVsChamp = new List<VsChamp>();
-            List<Task> listTask = new List<Task>();
-
-            if (nowGameSaved) return;
-
-            if (rbtnAliTop.Checked)
-            {
-                if (cboxEnTop.Text == "") return;
-                string cboxEnTopText = cboxEnTop.Text;
-                tboxVsChamp.Text = cboxEnTop.Text;
-
-                string champlist = "";
-                if (cboxMainPos.Text == "탑")
-                    champlist = tboxMainPos.Text;
-                else if (cboxSubPos.Text == "탑")
-                    champlist = tboxSubPos.Text;
-
-                if (champlist.Length == 0) return;
-
-                string[] champs = champlist.Split('\n', '\r',' ', ',');
-
-                foreach (string champ in champs)
-                {
-                    if (champ == "") continue;
-                    if (champ == cboxEnTop.Text) continue;
-
-                    listTask.Add(Task.Run(() =>
+                    if ((isAliTopChanged || isEnTopChanged) && cboxAliTopText != "" && cboxEnTopText != "")
                     {
                         SQLite db = SQLite.Instance;
                         DataTable dt;
-                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliTopText}')");
                         string AliOpID = (string)dt.Rows[0]["OpggID"];
                         dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnTopText}')");
                         string EnOpID = (string)dt.Rows[0]["OpggID"];
 
-                        List<string> lineRate = GetLineRate("top", AliOpID, EnOpID);
-                        List<string> winRate = GetWinRate("top", AliOpID, EnOpID);
-                        listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
-                    }));
-                }
-            }
-            else if (rbtnAliJungle.Checked)
-            {
-                if (cboxEnJungle.Text == "") return;
-                string cboxEnJungleText = cboxEnJungle.Text;
-                tboxVsChamp.Text = cboxEnJungle.Text;
-
-                string champlist = "";
-                if (cboxMainPos.Text == "정글")
-                    champlist = tboxMainPos.Text;
-                else if (cboxSubPos.Text == "정글")
-                    champlist = tboxSubPos.Text;
-
-                if (champlist.Length == 0) return;
-
-                string[] champs = champlist.Split('\n', '\r', ' ', ',');
-
-                foreach (string champ in champs)
-                {
-                    if (champ == "") continue;
-                    if (champ == cboxEnJungle.Text) continue;
-
-                    listTask.Add(Task.Run(() =>
+                        List<string> lineRate = cancel ? new List<string>(cancelString2) : GetLineRate("top", AliOpID, EnOpID);
+                        SetLineRate("Top", lineRate);
+                    }
+                    else if ((isAliJungleChanged || isEnJungleChanged) && cboxAliJungleText != "" && cboxEnJungleText != "")
                     {
                         SQLite db = SQLite.Instance;
                         DataTable dt;
-                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliJungleText}')");
                         string AliOpID = (string)dt.Rows[0]["OpggID"];
                         dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnJungleText}')");
                         string EnOpID = (string)dt.Rows[0]["OpggID"];
 
-                        List<string> lineRate = GetLineRate("jungle", AliOpID, EnOpID);
-                        List<string> winRate = GetWinRate("jungle", AliOpID, EnOpID);
-                        listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
-                    }));
-                }
-            }
-            else if (rbtnAliMid.Checked)
-            {
-                if (cboxEnMid.Text == "") return;
-                string cboxEnMidText = cboxEnMid.Text;
-                tboxVsChamp.Text = cboxEnMid.Text;
-
-                string champlist = "";
-                if (cboxMainPos.Text == "미드")
-                    champlist = tboxMainPos.Text;
-                else if (cboxSubPos.Text == "미드")
-                    champlist = tboxSubPos.Text;
-
-                if (champlist.Length == 0) return;
-
-                string[] champs = champlist.Split('\n', '\r', ' ', ',');
-
-                foreach (string champ in champs)
-                {
-                    if (champ == "") continue;
-                    if (champ == cboxEnMid.Text) continue;
-
-                    listTask.Add(Task.Run(() =>
+                        List<string> lineRate = cancel ? new List<string>(cancelString2) : GetLineRate("jungle", AliOpID, EnOpID);
+                        SetLineRate("Jungle", lineRate);
+                    }
+                    else if ((isAliMidChanged || isEnMidChanged) && cboxAliMidText != "" && cboxEnMidText != "")
                     {
                         SQLite db = SQLite.Instance;
                         DataTable dt;
-                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliMidText}')");
                         string AliOpID = (string)dt.Rows[0]["OpggID"];
                         dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnMidText}')");
                         string EnOpID = (string)dt.Rows[0]["OpggID"];
 
-                        List<string> lineRate = GetLineRate("mid", AliOpID, EnOpID);
-                        List<string> winRate = GetWinRate("mid", AliOpID, EnOpID);
-                        listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
-                    }));
-                }
-            }
-            else if (rbtnAliAd.Checked)
-            {
-                if (cboxEnAd.Text == "") return;
-                string cboxEnAdText = cboxEnAd.Text;
-                tboxVsChamp.Text = cboxEnAd.Text;
-
-                string champlist = "";
-                if (cboxMainPos.Text == "원딜")
-                    champlist = tboxMainPos.Text;
-                else if (cboxSubPos.Text == "원딜")
-                    champlist = tboxSubPos.Text;
-
-                if (champlist.Length == 0) return;
-
-                string[] champs = champlist.Split('\n', '\r', ' ', ',');
-
-                foreach (string champ in champs)
-                {
-                    if (champ == "") continue;
-                    if (champ == cboxEnAd.Text) continue;
-
-                    listTask.Add(Task.Run(() =>
+                        List<string> lineRate = cancel ? new List<string>(cancelString2) : GetLineRate("mid", AliOpID, EnOpID);
+                        SetLineRate("Mid", lineRate);
+                    }
+                    else if ((isAliAdChanged || isEnAdChanged) && cboxAliAdText != "" && cboxEnAdText != "")
                     {
                         SQLite db = SQLite.Instance;
                         DataTable dt;
-                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliAdText}')");
                         string AliOpID = (string)dt.Rows[0]["OpggID"];
                         dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnAdText}')");
                         string EnOpID = (string)dt.Rows[0]["OpggID"];
 
-                        List<string> lineRate = GetLineRate("adc", AliOpID, EnOpID);
-                        List<string> winRate = GetWinRate("adc", AliOpID, EnOpID);
-                        listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
-                    }));
-                }
-            }
-            else if (rbtnAliSup.Checked)
-            {
-                if (cboxEnSup.Text == "") return;
-                string cboxEnSupText = cboxEnSup.Text;
-                tboxVsChamp.Text = cboxEnSup.Text;
-
-                string champlist = "";
-                if (cboxMainPos.Text == "서폿")
-                    champlist = tboxMainPos.Text;
-                else if (cboxSubPos.Text == "서폿")
-                    champlist = tboxSubPos.Text;
-
-                if (champlist.Length == 0) return;
-
-                string[] champs = champlist.Split('\n', '\r', ' ', ',');
-
-                foreach (string champ in champs)
-                {
-                    if (champ == "") continue;
-                    if (champ == cboxEnSup.Text) continue;
-
-                    listTask.Add(Task.Run(() =>
+                        List<string> lineRate = cancel ? new List<string>(cancelString2) : GetLineRate("adc", AliOpID, EnOpID);
+                        SetLineRate("Ad", lineRate);
+                    }
+                    else if ((isAliSupChanged || isEnSupChanged) && cboxAliSupText != "" && cboxEnSupText != "")
                     {
                         SQLite db = SQLite.Instance;
                         DataTable dt;
-                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                        dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxAliSupText}')");
                         string AliOpID = (string)dt.Rows[0]["OpggID"];
                         dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnSupText}')");
                         string EnOpID = (string)dt.Rows[0]["OpggID"];
 
-                        List<string> lineRate = GetLineRate("support", AliOpID, EnOpID);
-                        List<string> winRate = GetWinRate("support", AliOpID, EnOpID);
-                        listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
-                    }));
+                        List<string> lineRate = cancel ? new List<string>(cancelString2) : GetLineRate("support", AliOpID, EnOpID);
+                        SetLineRate("Sup", lineRate);
+                    }
                 }
-            }
-
-            await Task.WhenAll(listTask.ToArray());
-
-            listVsChamp.Sort(delegate (VsChamp x, VsChamp y)
-            {
-                if (x.vsAvg > y.vsAvg) return -1;
-                else return 1;
+                catch (Exception ex)
+                {
+                    Log.Error(ex.ToString());
+                }
             });
 
-            if (tboxVsChamp.Text != "")
+            LoadDataGridView();
+            
+            RecommendChamp(cancel);
+        }
+
+        async public void RecommendChamp(bool cancel)
+        {
+            if (cancel)
             {
-                for (int i = 0; i < listVsChamp.Count; i++)
+                tboxVsChamp.Text = "대기중";
+                tboxVsAd1.Text = "대기중";
+                tboxVsAd2.Text = "대기중";
+                tboxVsAd3.Text = "대기중";
+                return;
+            }
+
+            try
+            {
+                List<VsChamp> listVsAdChamp = new List<VsChamp>();
+                List<VsChamp> listVsApChamp = new List<VsChamp>();
+                List<Task> listTask = new List<Task>();
+
+                if (nowGameSaved) return;
+
+                if (rbtnAliTop.Checked)
+                {
+                    if (cboxEnTop.Text == "") return;
+                    string cboxEnTopText = cboxEnTop.Text;
+
+                    if (!cboxEnTop.Items.Contains(cboxEnTopText)) return;
+
+                    tboxVsChamp.Text = cboxEnTop.Text;
+
+                    string champlist = "";
+                    if (cboxMainPos.Text == "탑")
+                        champlist = tboxMainPos.Text;
+                    else if (cboxSubPos.Text == "탑")
+                        champlist = tboxSubPos.Text;
+
+                    if (champlist.Length == 0) return;
+
+                    string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+                    foreach (string champ in champs)
+                    {
+                        if (champ == "") continue;
+                        if (champ == cboxEnTop.Text) continue;
+
+                        listTask.Add(Task.Run(() =>
+                        {
+                            SQLite db = SQLite.Instance;
+                            DataTable dt;
+                            dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
+                            string AliOpID = (string)dt.Rows[0]["OpggID"];
+                            string AliADAP = (string)dt.Rows[0]["ADAP"];
+                            dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnTopText}')");
+                            string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                            List<string> lineRate = GetLineRate("top", AliOpID, EnOpID);
+                            List<string> winRate = GetWinRate("top", AliOpID, EnOpID);
+
+                            if (AliADAP == "AD")
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else if (AliADAP == "AP")
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else // ALL
+                            {
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            }
+                        }));
+                    }
+                }
+                else if (rbtnAliJungle.Checked)
+                {
+                    if (cboxEnJungle.Text == "") return;
+                    string cboxEnJungleText = cboxEnJungle.Text;
+
+                    if (!cboxEnJungle.Items.Contains(cboxEnJungleText)) return;
+
+                    tboxVsChamp.Text = cboxEnJungle.Text;
+
+                    string champlist = "";
+                    if (cboxMainPos.Text == "정글")
+                        champlist = tboxMainPos.Text;
+                    else if (cboxSubPos.Text == "정글")
+                        champlist = tboxSubPos.Text;
+
+                    if (champlist.Length == 0) return;
+
+                    string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+                    foreach (string champ in champs)
+                    {
+                        if (champ == "") continue;
+                        if (champ == cboxEnJungle.Text) continue;
+
+                        listTask.Add(Task.Run(() =>
+                        {
+                            SQLite db = SQLite.Instance;
+                            DataTable dt;
+                            dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
+                            string AliOpID = (string)dt.Rows[0]["OpggID"];
+                            string AliADAP = (string)dt.Rows[0]["ADAP"];
+                            dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnJungleText}')");
+                            string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                            List<string> lineRate = GetLineRate("jungle", AliOpID, EnOpID);
+                            List<string> winRate = GetWinRate("jungle", AliOpID, EnOpID);
+
+                            if (AliADAP == "AD")
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else if (AliADAP == "AP")
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else // ALL
+                            {
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            }
+                        }));
+                    }
+                }
+                else if (rbtnAliMid.Checked)
+                {
+                    if (cboxEnMid.Text == "") return;
+                    string cboxEnMidText = cboxEnMid.Text;
+
+                    if (!cboxEnMid.Items.Contains(cboxEnMidText)) return;
+
+                    tboxVsChamp.Text = cboxEnMid.Text;
+
+                    string champlist = "";
+                    if (cboxMainPos.Text == "미드")
+                        champlist = tboxMainPos.Text;
+                    else if (cboxSubPos.Text == "미드")
+                        champlist = tboxSubPos.Text;
+
+                    if (champlist.Length == 0) return;
+
+                    string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+                    foreach (string champ in champs)
+                    {
+                        if (champ == "") continue;
+                        if (champ == cboxEnMid.Text) continue;
+
+                        listTask.Add(Task.Run(() =>
+                        {
+                            SQLite db = SQLite.Instance;
+                            DataTable dt;
+                            dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
+                            string AliOpID = (string)dt.Rows[0]["OpggID"];
+                            string AliADAP = (string)dt.Rows[0]["ADAP"];
+                            dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnMidText}')");
+                            string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                            List<string> lineRate = GetLineRate("mid", AliOpID, EnOpID);
+                            List<string> winRate = GetWinRate("mid", AliOpID, EnOpID);
+
+                            if (AliADAP == "AD")
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else if (AliADAP == "AP")
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else // ALL
+                            {
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            }
+                        }));
+                    }
+                }
+                else if (rbtnAliAd.Checked)
+                {
+                    if (cboxEnAd.Text == "") return;
+                    string cboxEnAdText = cboxEnAd.Text;
+
+                    if (!cboxEnAd.Items.Contains(cboxEnAdText)) return;
+
+                    tboxVsChamp.Text = cboxEnAd.Text;
+
+                    string champlist = "";
+                    if (cboxMainPos.Text == "원딜")
+                        champlist = tboxMainPos.Text;
+                    else if (cboxSubPos.Text == "원딜")
+                        champlist = tboxSubPos.Text;
+
+                    if (champlist.Length == 0) return;
+
+                    string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+                    foreach (string champ in champs)
+                    {
+                        if (champ == "") continue;
+                        if (champ == cboxEnAd.Text) continue;
+
+                        listTask.Add(Task.Run(() =>
+                        {
+                            SQLite db = SQLite.Instance;
+                            DataTable dt;
+                            dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
+                            string AliOpID = (string)dt.Rows[0]["OpggID"];
+                            string AliADAP = (string)dt.Rows[0]["ADAP"];
+                            dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnAdText}')");
+                            string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                            List<string> lineRate = GetLineRate("adc", AliOpID, EnOpID);
+                            List<string> winRate = GetWinRate("adc", AliOpID, EnOpID);
+
+                            if (AliADAP == "AD")
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else if (AliADAP == "AP")
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else // ALL
+                            {
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            }
+                        }));
+                    }
+                }
+                else if (rbtnAliSup.Checked)
+                {
+                    if (cboxEnSup.Text == "") return;
+                    string cboxEnSupText = cboxEnSup.Text;
+
+                    if (!cboxEnSup.Items.Contains(cboxEnSupText)) return;
+
+                    tboxVsChamp.Text = cboxEnSup.Text;
+
+                    string champlist = "";
+                    if (cboxMainPos.Text == "서폿")
+                        champlist = tboxMainPos.Text;
+                    else if (cboxSubPos.Text == "서폿")
+                        champlist = tboxSubPos.Text;
+
+                    if (champlist.Length == 0) return;
+
+                    string[] champs = champlist.Split('\n', '\r', ' ', ',');
+
+                    foreach (string champ in champs)
+                    {
+                        if (champ == "") continue;
+                        if (champ == cboxEnSup.Text) continue;
+
+                        listTask.Add(Task.Run(() =>
+                        {
+                            SQLite db = SQLite.Instance;
+                            DataTable dt;
+                            dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
+                            string AliOpID = (string)dt.Rows[0]["OpggID"];
+                            string AliADAP = (string)dt.Rows[0]["ADAP"];
+                            dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{cboxEnSupText}')");
+                            string EnOpID = (string)dt.Rows[0]["OpggID"];
+
+                            List<string> lineRate = GetLineRate("support", AliOpID, EnOpID);
+                            List<string> winRate = GetWinRate("support", AliOpID, EnOpID);
+
+                            if (AliADAP == "AD")
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else if (AliADAP == "AP")
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            else // ALL
+                            {
+                                listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                                listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                            }
+                        }));
+                    }
+                }
+
+                await Task.WhenAll(listTask.ToArray());
+
+                listVsAdChamp.Sort(delegate (VsChamp x, VsChamp y)
+                {
+                    if (x.vsAvg > y.vsAvg) return -1;
+                    else return 1;
+                });
+
+                listVsApChamp.Sort(delegate (VsChamp x, VsChamp y)
+                {
+                    if (x.vsAvg > y.vsAvg) return -1;
+                    else return 1;
+                });
+
+                for (int i = 0; i < listVsAdChamp.Count; i++)
                 {
                     if (i == 3) break;
 
                     if (i == 0)
                     {
-                        tboxVs1.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd1.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
                     }
                     else if (i == 1)
                     {
-                        tboxVs2.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd2.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
                     }
                     else if (i == 2)
                     {
-                        tboxVs3.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd3.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
                     }
                 }
+
+                for (int i = 0; i < listVsApChamp.Count; i++)
+                {
+                    if (i == 3) break;
+
+                    if (i == 0)
+                    {
+                        tboxVsAp1.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
+                    }
+                    else if (i == 1)
+                    {
+                        tboxVsAp2.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
+                    }
+                    else if (i == 2)
+                    {
+                        tboxVsAp3.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
+                    }
+                }
+            }
+            catch
+            {
+                tboxVsChamp.Text = "대기중";
+                tboxVsAd1.Text = "대기중";
+                tboxVsAd2.Text = "대기중";
+                tboxVsAd3.Text = "대기중";
             }
         }
 
@@ -1066,7 +1305,7 @@ namespace LoL_Assistant
             }
             catch (Exception ex)
             {
-                // Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
             }
 
             try
@@ -1109,7 +1348,7 @@ namespace LoL_Assistant
             }
             catch (Exception ex)
             {
-                // Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
             }
         }
 
@@ -1251,7 +1490,8 @@ namespace LoL_Assistant
 
         async public void VsSortMethod(string mode)
         {
-            List<VsChamp> listVsChamp = new List<VsChamp>();
+            List<VsChamp> listVsAdChamp = new List<VsChamp>();
+            List<VsChamp> listVsApChamp = new List<VsChamp>();
             List<Task> listTask = new List<Task>();
 
             string refer = "";
@@ -1304,20 +1544,49 @@ namespace LoL_Assistant
                 {
                     SQLite db = SQLite.Instance;
                     DataTable dt;
-                    dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{champ}')");
+                    dt = db.ReadTable($"SELECT OpggID, ADAP FROM Champs WHERE KorName in ('{champ}')");
                     string AliOpID = (string)dt.Rows[0]["OpggID"];
+                    string AliADAP = (string)dt.Rows[0]["ADAP"];
                     dt = db.ReadTable($"SELECT OpggID FROM Champs WHERE KorName in ('{referEnemy}')");
                     string EnOpID = (string)dt.Rows[0]["OpggID"];
 
                     List<string> lineRate = GetLineRate(referEn, AliOpID, EnOpID);
                     List<string> winRate = GetWinRate(referEn, AliOpID, EnOpID);
-                    listVsChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+
+                    if (AliADAP == "AD")
+                        listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                    else if (AliADAP == "AP")
+                        listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                    else // ALL
+                    {
+                        listVsAdChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                        listVsApChamp.Add(new VsChamp(champ, double.Parse(lineRate[0]), double.Parse(winRate[0])));
+                    }
                 }));
             }
 
             await Task.WhenAll(listTask.ToArray());
 
-            listVsChamp.Sort(delegate (VsChamp x, VsChamp y)
+            listVsAdChamp.Sort(delegate (VsChamp x, VsChamp y)
+            {
+                if (mode == "평균")
+                {
+                    if (x.vsAvg > y.vsAvg) return -1;
+                    else return 1;
+                }
+                else if (mode == "라인전우위")
+                {
+                    if (x.vsLane > y.vsLane) return -1;
+                    else return 1;
+                }
+                else // if (mode == "게임승률")
+                {
+                    if (x.vsGame > y.vsGame) return -1;
+                    else return 1;
+                }
+            });
+
+            listVsApChamp.Sort(delegate (VsChamp x, VsChamp y)
             {
                 if (mode == "평균")
                 {
@@ -1338,21 +1607,39 @@ namespace LoL_Assistant
 
             if (tboxVsChamp.Text != "")
             {
-                for (int i = 0; i < listVsChamp.Count; i++)
+                for (int i = 0; i < listVsAdChamp.Count; i++)
                 {
                     if (i == 3) break;
 
                     if (i == 0)
                     {
-                        tboxVs1.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd1.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
                     }
                     else if (i == 1)
                     {
-                        tboxVs2.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd2.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
                     }
                     else if (i == 2)
                     {
-                        tboxVs3.Text = $"{listVsChamp[i].champ} : 라인전우위[ {listVsChamp[i].vsLane} ] / 게임승률[ {listVsChamp[i].vsGame} ] / 평균[ {listVsChamp[i].vsAvg} ]";
+                        tboxVsAd3.Text = $"{listVsAdChamp[i].champ} : [{listVsAdChamp[i].vsLane}] / [{listVsAdChamp[i].vsGame}] / [{listVsAdChamp[i].vsAvg}]";
+                    }
+                }
+
+                for (int i = 0; i < listVsApChamp.Count; i++)
+                {
+                    if (i == 3) break;
+
+                    if (i == 0)
+                    {
+                        tboxVsAp1.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
+                    }
+                    else if (i == 1)
+                    {
+                        tboxVsAp2.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
+                    }
+                    else if (i == 2)
+                    {
+                        tboxVsAp3.Text = $"{listVsApChamp[i].champ} : [{listVsApChamp[i].vsLane}] / [{listVsApChamp[i].vsGame}] / [{listVsApChamp[i].vsAvg}]";
                     }
                 }
             }
