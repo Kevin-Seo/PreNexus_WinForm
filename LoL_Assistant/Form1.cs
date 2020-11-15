@@ -365,11 +365,13 @@ namespace LoL_Assistant
                 }
             }
 
-            ret.Add(one);
-            ret.Add(two);
-            ret.Add(three);
-            ret.Add(four);
-            ret.Add(five);
+            double avg = (double.Parse(one) + double.Parse(two) + double.Parse(three) + double.Parse(four)) / 4;
+
+            ret.Add((50 - (avg - double.Parse(one))).ToString("F2"));
+            ret.Add((50 - (avg - double.Parse(two))).ToString("F2"));
+            ret.Add((50 - (avg - double.Parse(three))).ToString("F2"));
+            ret.Add((50 - (avg - double.Parse(four))).ToString("F2"));
+            ret.Add(double.Parse(five).ToString("F2"));
 
             return ret;
         }
