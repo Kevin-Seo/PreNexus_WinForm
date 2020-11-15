@@ -111,16 +111,16 @@ namespace LoL_Assistant
         {
             // Step 1.
             cboxGameNumber.Items.Clear();
-            cboxAliTop.Text = "";
-            cboxAliJungle.Text = "";
-            cboxAliMid.Text = "";
-            cboxAliAd.Text = "";
-            cboxAliSup.Text = "";
-            cboxEnTop.Text = "";
-            cboxEnJungle.Text = "";
-            cboxEnMid.Text = "";
-            cboxEnAd.Text = "";
-            cboxEnSup.Text = "";
+            //cboxAliTop.Text = "";
+            //cboxAliJungle.Text = "";
+            //cboxAliMid.Text = "";
+            //cboxAliAd.Text = "";
+            //cboxAliSup.Text = "";
+            //cboxEnTop.Text = "";
+            //cboxEnJungle.Text = "";
+            //cboxEnMid.Text = "";
+            //cboxEnAd.Text = "";
+            //cboxEnSup.Text = "";
             dataGridView1.DataSource = null;
             dataGridView2.DataSource = null;
             nowGameSaved = false;
@@ -1307,7 +1307,7 @@ namespace LoL_Assistant
             }
             catch (Exception ex)
             {
-                Log.Error(ex.ToString());
+                // Log.Error(ex.ToString());
             }
 
             try
