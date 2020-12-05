@@ -890,6 +890,9 @@ namespace LoL_Assistant
                 tboxVsAd1.Text = "대기중";
                 tboxVsAd2.Text = "대기중";
                 tboxVsAd3.Text = "대기중";
+                tboxVsAp1.Text = "대기중";
+                tboxVsAp2.Text = "대기중";
+                tboxVsAp3.Text = "대기중";
                 return;
             }
 
@@ -1203,6 +1206,9 @@ namespace LoL_Assistant
                 tboxVsAd1.Text = "대기중";
                 tboxVsAd2.Text = "대기중";
                 tboxVsAd3.Text = "대기중";
+                tboxVsAp1.Text = "대기중";
+                tboxVsAp2.Text = "대기중";
+                tboxVsAp3.Text = "대기중";
             }
         }
 
