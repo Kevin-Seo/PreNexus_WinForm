@@ -129,6 +129,9 @@ namespace LoL_Assistant
             tboxVsAd1.Text = "";
             tboxVsAd2.Text = "";
             tboxVsAd3.Text = "";
+            tboxVsAp1.Text = "";
+            tboxVsAp2.Text = "";
+            tboxVsAp3.Text = "";
 
             try
             {
